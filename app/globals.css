@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: theme("colors.surface.50");
+    color: theme("colors.ink.900");
+    line-height: 1.6;
+  }
+
+  /* Consistent focus ring across all interactive elements */
+  :focus-visible {
+    outline: 2px solid theme("colors.brand.500");
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Page container — one definition, used everywhere */
+  .page {
+    @apply max-w-5xl mx-auto px-6;
+  }
+
+  /* Section spacing — consistent vertical rhythm */
+  .section {
+    @apply mb-16;
+  }
+
+  /* Shared label style replacing scattered text-[11px] */
+  .label {
+    @apply text-label font-semibold tracking-widest uppercase text-ink-300;
+  }
+
+  /* Input / textarea / select base */
+  .field {
+    @apply w-full rounded-xl bg-surface-0 border border-surface-200
+           px-3.5 py-2.5 text-sm text-ink-900 placeholder-ink-300
+           focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/10
+           transition-colors;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-4 py-2.5 rounded-xl
+           bg-brand-600 hover:bg-brand-700
+           text-white text-sm font-medium
+           shadow-sm transition-colors;
+  }
+
+  /* Secondary / outline button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+           px-4 py-2.5 rounded-xl
+           border border-surface-200 bg-surface-0 hover:bg-surface-100
+           text-ink-700 text-sm font-medium
+           transition-colors;
+  }
+}
