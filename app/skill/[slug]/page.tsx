@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SKILLS, CATEGORY_LABELS } from "@/lib/skills";
 import { generateSkillMarkdown } from "@/lib/skillGenerator";
 import DownloadButton from "@/components/DownloadButton";
+import PreviewInClaudeButton from "@/components/PreviewInClaudeButton";
 import ReviewSection from "@/components/ReviewSection";
 
 interface Props {
@@ -172,7 +173,7 @@ export default function SkillDetailPage({ params }: Props) {
 
           <Divider />
 
-          <ReviewSection initialReviews={skill.reviews} initialRating={skill.rating} />
+          <ReviewSection slug={skill.slug} initialReviews={skill.reviews} initialRating={skill.rating} />
 
           <Divider />
 
@@ -241,7 +242,7 @@ export default function SkillDetailPage({ params }: Props) {
 
             <DownloadButton skillMarkdown={skillMarkdown} skillName={skill.name} />
 
-            <button className="btn-secondary w-full">Preview in Claude</button>
+            <PreviewInClaudeButton skillMarkdown={skillMarkdown} skillName={skill.name} />
 
             {/* Stats */}
             <div className="rounded-xl border border-surface-200 bg-surface-0 divide-y divide-surface-100 overflow-hidden">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Review } from "@/types/skill";
 
 const STAR_PATH = "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z";
@@ -157,39 +157,57 @@ function WriteReviewForm({ onSubmit }: { onSubmit: (f: FormState) => void }) {
 }
 
 export default function ReviewSection({
+  slug,
   initialReviews,
   initialRating,
 }: {
+  slug: string;
   initialReviews: Review[];
   initialRating: number;
 }) {
-  const [localReviews, setLocalReviews] = useState<Review[]>([]);
+  const [persistedReviews, setPersistedReviews] = useState<Review[]>([]);
+  const [newReviewId, setNewReviewId] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [justSubmitted, setJustSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const allReviews = [...localReviews, ...initialReviews];
+  useEffect(() => {
+    fetch(`/api/skills/${slug}/reviews`)
+      .then((r) => r.json())
+      .then((data) => { if (data.reviews) setPersistedReviews(data.reviews); })
+      .catch(() => {});
+  }, [slug]);
+
+  const allReviews = [...persistedReviews, ...initialReviews];
   const avgRating =
     allReviews.length === 0
       ? initialRating
       : allReviews.reduce((s, r) => s + r.rating, 0) / allReviews.length;
 
-  function handleSubmit(form: FormState) {
-    setLocalReviews((prev) => [
-      {
-        id: `local-${Date.now()}`,
-        rating: form.rating,
-        text: form.text.trim(),
-        author: "@you",
-        date: new Date().toISOString(),
-      },
-      ...prev,
-    ]);
-    setShowForm(false);
-    setJustSubmitted(true);
-    setTimeout(() => setJustSubmitted(false), 3000);
+  async function handleSubmit(form: FormState) {
+    setSubmitError(null);
+    try {
+      const res = await fetch(`/api/skills/${slug}/reviews`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rating: form.rating, text: form.text.trim(), author: "you" }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setSubmitError(data.error ?? "Could not submit review. Please try again.");
+        return;
+      }
+      setPersistedReviews((prev) => [data.review, ...prev]);
+      setNewReviewId(data.review.id);
+      setShowForm(false);
+      setJustSubmitted(true);
+      setTimeout(() => setJustSubmitted(false), 3000);
+    } catch {
+      setSubmitError("Network error — please check your connection and try again.");
+    }
   }
 
-  const localIds = new Set(localReviews.map((r) => r.id));
+  const newIds = newReviewId ? new Set([newReviewId]) : new Set<string>();
 
   return (
     <section className="mb-10">
@@ -229,6 +247,13 @@ export default function ReviewSection({
         </div>
       )}
 
+      {/* Submit error */}
+      {submitError && (
+        <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 mb-4">
+          {submitError}
+        </p>
+      )}
+
       {/* Form */}
       {showForm && <WriteReviewForm onSubmit={handleSubmit} />}
 
@@ -239,7 +264,7 @@ export default function ReviewSection({
             <ReviewCard
               key={review.id}
               review={review}
-              isNew={localIds.has(review.id)}
+              isNew={newIds.has(review.id)}
             />
           ))
         ) : (

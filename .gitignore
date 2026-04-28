@@ -20,3 +20,10 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# Local data (filesystem storage not supported on Vercel)
+data/
+
+# TypeScript
+tsconfig.tsbuildinfo
+next-env.d.ts
