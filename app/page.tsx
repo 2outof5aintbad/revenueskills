@@ -2,26 +2,9 @@ import Link from "next/link";
 import SkillCard from "@/components/SkillCard";
 import SectionHeader from "@/components/SectionHeader";
 import { TRENDING_SKILLS, TOP_RATED_SKILLS, RECENTLY_UPDATED_SKILLS, SKILLS } from "@/lib/skills";
+import { FEATURED_BUNDLES } from "@/lib/bundles";
 
 const totalInstalls = SKILLS.reduce((sum, s) => sum + s.installs, 0);
-
-const ROLES = [
-  {
-    label: "Account Executives",
-    description: "Qualify faster, prep smarter, close more.",
-    slugs: ["meddpicc-discovery-prep", "account-prep-brief", "roi-business-case-builder"],
-  },
-  {
-    label: "All Reps",
-    description: "Handle objections and follow up without the grind.",
-    slugs: ["objection-reframe-engine", "call-followup-generator", "meddpicc-discovery-prep"],
-  },
-  {
-    label: "Customer Success",
-    description: "Run better QBRs and get ahead of churn.",
-    slugs: ["account-prep-brief", "roi-business-case-builder", "call-followup-generator"],
-  },
-];
 
 const SOCIAL_PROOF = [
   {
@@ -112,31 +95,46 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Skills by role ── */}
+        {/* ── Bundles by role ── */}
         <section className="section">
           <SectionHeader
-            title="Skills by Role"
-            description="Find what's right for your position"
-            href="/marketplace"
-            hrefLabel="See all skills"
+            title="Skill Bundles by Role"
+            description="Curated collections for every position on your revenue team"
+            href="/bundles"
+            hrefLabel="See all bundles"
           />
-          <div className="space-y-10">
-            {ROLES.map((role) => {
-              const roleSkills = role.slugs
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {FEATURED_BUNDLES.map((bundle) => {
+              const bundleSkills = bundle.skillSlugs
                 .map((slug) => SKILLS.find((s) => s.slug === slug))
                 .filter(Boolean) as typeof SKILLS;
+              const totalBundleInstalls = bundleSkills.reduce((sum, s) => sum + s.installs, 0);
               return (
-                <div key={role.label}>
-                  <div className="flex items-baseline gap-3 mb-4">
-                    <h3 className="text-sm font-bold text-navy-900">{role.label}</h3>
-                    <span className="text-xs text-ink-400">{role.description}</span>
+                <Link
+                  key={bundle.slug}
+                  href={`/bundles/${bundle.slug}`}
+                  className="group flex flex-col bg-white border border-surface-200 rounded-2xl p-5 shadow-card hover:shadow-card-hover hover:-translate-y-px transition-all duration-200"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <span className="text-2xl leading-none">{bundle.icon}</span>
+                    {bundle.featured && (
+                      <span className="label px-2 py-0.5 rounded-full bg-brand-50 text-brand-600 border border-brand-100">
+                        Featured
+                      </span>
+                    )}
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {roleSkills.map((skill) => (
-                      <SkillCard key={skill.id} skill={skill} />
-                    ))}
+                  <div className="label text-ink-400 mb-1">{bundle.role}</div>
+                  <h3 className="text-sm font-bold text-navy-900 mb-1.5 group-hover:text-brand-600 transition-colors leading-snug">
+                    {bundle.name}
+                  </h3>
+                  <p className="text-sm text-ink-500 leading-relaxed mb-4 flex-1">
+                    {bundle.tagline}
+                  </p>
+                  <div className="flex items-center justify-between pt-3 border-t border-surface-100 text-xs text-ink-400">
+                    <span>{bundleSkills.length} skills</span>
+                    <span>{totalBundleInstalls.toLocaleString()} installs</span>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

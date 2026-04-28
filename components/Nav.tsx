@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const links = [
   { href: "/marketplace", label: "Marketplace" },
+  { href: "/bundles", label: "Bundles" },
   { href: "/categories", label: "Categories" },
   { href: "/submit", label: "Submit a Skill" },
 ];
