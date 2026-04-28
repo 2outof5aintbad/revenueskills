@@ -32,8 +32,7 @@ function parseTriggerList(raw: string | string[]): string[] {
 
 function parseTagList(raw: string | string[]): string[] {
   const list = Array.isArray(raw) ? raw : raw.split(",");
-  return [...new Set(list.map((t) => t.trim()).filter(Boolean))];
-}
+return Array.from(new Set(list.map((t) => t.trim()).filter(Boolean)));}
 
 // ---------------------------------------------------------------------------
 // Instruction structure helpers
