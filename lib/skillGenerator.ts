@@ -1,4 +1,4 @@
-import type { SkillCategory } from "@/types/skill";
+nano lib/skillGenerator.tsimport type { SkillCategory } from "@/types/skill";
 
 // ---------------------------------------------------------------------------
 // Input type
@@ -110,7 +110,7 @@ function parseTags(raw: string | string[]): string[] {
   const list = Array.isArray(raw)
     ? raw
     : raw.split(",").map((t) => t.trim());
-  return [...new Set(list.map((t) => t.trim()).filter(Boolean))];
+  return Array.from(new Set(list.map((t) => t.trim()).filter(Boolean)));
 }
 
 /** Parse newline-or-comma-separated triggers, trim, drop empties */
