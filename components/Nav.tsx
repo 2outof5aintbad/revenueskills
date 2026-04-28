@@ -7,6 +7,7 @@ const links = [
   { href: "/marketplace", label: "Marketplace" },
   { href: "/bundles", label: "Bundles" },
   { href: "/categories", label: "Categories" },
+  { href: "/getting-started", label: "Get Started" },
   { href: "/submit", label: "Submit a Skill" },
 ];
 
