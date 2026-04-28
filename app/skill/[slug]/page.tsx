@@ -4,6 +4,7 @@ import { SKILLS, CATEGORY_LABELS } from "@/lib/skills";
 import { generateSkillMarkdown } from "@/lib/skillGenerator";
 import DownloadButton from "@/components/DownloadButton";
 import PreviewInClaudeButton from "@/components/PreviewInClaudeButton";
+import CopyButton from "@/components/CopyButton";
 import ReviewSection from "@/components/ReviewSection";
 
 interface Props {
@@ -40,6 +41,10 @@ export default function SkillDetailPage({ params }: Props) {
         month: "short", day: "numeric", year: "numeric",
       })
     : "—";
+
+  const relatedSkills = SKILLS.filter(
+    (s) => s.slug !== skill.slug && s.category === skill.category
+  ).slice(0, 3);
 
   const skillMarkdown = generateSkillMarkdown({
     name: skill.name,
@@ -135,20 +140,14 @@ export default function SkillDetailPage({ params }: Props) {
           {/* What's Included */}
           <section className="mb-10">
             <SectionLabel>What&apos;s Included</SectionLabel>
-            <div className="space-y-2">
-              {[
-                { name: "SKILL.md",      desc: "Core skill definition — instructions, triggers, and output format", icon: "📄" },
-                { name: "references/",   desc: "Supporting context files, frameworks, and prompt libraries",       icon: "📁" },
-                { name: "assets/",       desc: "Example outputs, templates, and sample data",                      icon: "🗂️" },
-              ].map((file) => (
-                <div key={file.name} className="flex items-start gap-3 px-4 py-3 rounded-xl bg-surface-50 border border-surface-100">
-                  <span className="text-base leading-5 mt-0.5 shrink-0">{file.icon}</span>
-                  <div>
-                    <p className="text-sm font-mono font-medium text-ink-700">{file.name}</p>
-                    <p className="text-xs text-ink-400 mt-0.5">{file.desc}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-surface-50 border border-surface-100">
+              <span className="text-base leading-5 mt-0.5 shrink-0">📄</span>
+              <div>
+                <p className="text-sm font-mono font-medium text-ink-700">SKILL.md</p>
+                <p className="text-xs text-ink-400 mt-0.5">
+                  The complete skill definition — system instructions, trigger phrases, and output format. Paste directly into a Claude Project or copy into any Claude conversation.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -234,6 +233,38 @@ export default function SkillDetailPage({ params }: Props) {
             </div>
           </section>
 
+          {/* Related Skills */}
+          {relatedSkills.length > 0 && (
+            <>
+              <Divider />
+              <section className="mb-10">
+                <SectionLabel>More in {CATEGORY_LABELS[skill.category]}</SectionLabel>
+                <div className="space-y-3">
+                  {relatedSkills.map((s) => (
+                    <Link
+                      key={s.slug}
+                      href={`/skill/${s.slug}`}
+                      className="flex items-start gap-4 p-4 rounded-xl border border-surface-200 bg-surface-0 hover:border-brand-200 hover:shadow-card-hover transition-all duration-200 group"
+                    >
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-navy-900 group-hover:text-brand-600 transition-colors mb-0.5 leading-snug">
+                          {s.name}
+                        </p>
+                        <p className="text-xs text-ink-400 line-clamp-2 leading-relaxed">
+                          {s.description}
+                        </p>
+                      </div>
+                      <div className="shrink-0 text-right">
+                        <p className="text-xs font-semibold text-ink-700">{s.rating.toFixed(1)} ★</p>
+                        <p className="text-xs text-ink-300">{s.installs.toLocaleString()}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            </>
+          )}
+
         </div>
 
         {/* ── Sidebar ── */}
@@ -242,7 +273,28 @@ export default function SkillDetailPage({ params }: Props) {
 
             <DownloadButton skillMarkdown={skillMarkdown} skillName={skill.name} />
 
+            <CopyButton text={skillMarkdown} />
+
             <PreviewInClaudeButton skillMarkdown={skillMarkdown} skillName={skill.name} />
+
+            {/* How to Use */}
+            <div className="rounded-xl border border-surface-200 bg-surface-0 p-4">
+              <p className="label mb-3">How to Use</p>
+              <ol className="space-y-3">
+                {[
+                  { step: "1", text: 'Click "Copy SKILL.md" above' },
+                  { step: "2", text: "Open Claude and paste into a Project's instructions or a new conversation" },
+                  { step: "3", text: "Use any trigger phrase to activate the skill" },
+                ].map(({ step, text }) => (
+                  <li key={step} className="flex gap-3 items-start">
+                    <span className="w-5 h-5 rounded-full bg-brand-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                      {step}
+                    </span>
+                    <span className="text-xs text-ink-500 leading-relaxed">{text}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
 
             {/* Stats */}
             <div className="rounded-xl border border-surface-200 bg-surface-0 divide-y divide-surface-100 overflow-hidden">
