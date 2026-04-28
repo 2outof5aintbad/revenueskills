@@ -6,8 +6,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "SkillMarket — Claude Skills Marketplace",
-  description: "Discover and install production-ready skills for Claude.",
+  title: "RevenueSkills — AI Skills for Sales Professionals",
+  description: "Discover and install Claude AI skills built for revenue teams. Close more deals, prep faster, and hit quota with skills designed for enterprise sales.",
 };
 
 export default function RootLayout({

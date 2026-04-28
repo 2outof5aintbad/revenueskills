@@ -10,11 +10,11 @@ export default function SkillCard({ skill }: { skill: Skill }) {
   return (
     <Link
       href={`/skill/${skill.slug}`}
-      className="group flex flex-col bg-surface-0 border border-surface-200 rounded-2xl p-5 shadow-card hover:shadow-card-hover hover:-translate-y-px transition-all duration-200"
+      className="group flex flex-col bg-white border border-surface-200 rounded-2xl p-5 shadow-card hover:shadow-card-hover hover:-translate-y-px transition-all duration-200"
     >
       {/* Category + featured */}
       <div className="flex items-center justify-between gap-2 mb-4">
-        <span className="label px-2 py-0.5 rounded-full bg-surface-100 border border-surface-200">
+        <span className="label px-2 py-0.5 rounded-full bg-surface-100 border border-surface-200 text-ink-400">
           {CATEGORY_LABELS[skill.category]}
         </span>
         {skill.featured && (
@@ -25,7 +25,7 @@ export default function SkillCard({ skill }: { skill: Skill }) {
       </div>
 
       {/* Name */}
-      <h3 className="text-sm font-semibold text-ink-900 mb-2 group-hover:text-brand-600 transition-colors leading-snug">
+      <h3 className="text-sm font-bold text-navy-900 mb-2 group-hover:text-brand-600 transition-colors leading-snug">
         {skill.name}
       </h3>
 
@@ -54,7 +54,7 @@ export default function SkillCard({ skill }: { skill: Skill }) {
           <svg className="w-3 h-3 text-amber-400 fill-current" viewBox="0 0 20 20" aria-hidden>
             <path d={STAR_PATH} />
           </svg>
-          <span className="text-xs font-medium text-ink-700">{skill.rating.toFixed(1)}</span>
+          <span className="text-xs font-semibold text-ink-700">{skill.rating.toFixed(1)}</span>
           <span className="text-xs text-ink-200">·</span>
           <span className="text-xs text-ink-400">
             {skill.reviews.length} review{skill.reviews.length !== 1 ? "s" : ""}
@@ -67,7 +67,6 @@ export default function SkillCard({ skill }: { skill: Skill }) {
         </div>
       </div>
 
-      {/* Author */}
       <p className="mt-2 text-label text-ink-300">by {skill.author}</p>
     </Link>
   );
