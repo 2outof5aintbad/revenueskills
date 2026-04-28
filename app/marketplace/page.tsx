@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import SkillCard from "@/components/SkillCard";
 import PageHeader from "@/components/PageHeader";
@@ -9,7 +9,7 @@ import type { SkillCategory } from "@/types/skill";
 
 const CATEGORIES = Object.keys(CATEGORY_LABELS) as SkillCategory[];
 
-export default function MarketplacePage() {
+function MarketplaceContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialCategory = (searchParams.get("category") ?? "") as SkillCategory | "";
@@ -88,5 +88,13 @@ export default function MarketplacePage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function MarketplacePage() {
+  return (
+    <Suspense>
+      <MarketplaceContent />
+    </Suspense>
   );
 }
