@@ -1,5 +1,4 @@
-nano lib/skillGenerator.tsimport type { SkillCategory } from "@/types/skill";
-
+import type { SkillCategory } from "@/types/skill";
 // ---------------------------------------------------------------------------
 // Input type
 // ---------------------------------------------------------------------------
