@@ -1,24 +1,7 @@
 import { NextResponse } from "next/server";
-import { readFileSync, writeFileSync } from "fs";
-import { join } from "path";
+import { kv } from "@vercel/kv";
 import { SKILLS } from "@/lib/skills";
 import type { Review } from "@/types/skill";
-
-const REVIEWS_PATH = join(process.cwd(), "data", "reviews.json");
-
-type ReviewStore = Record<string, Review[]>;
-
-function readStore(): ReviewStore {
-  try {
-    return JSON.parse(readFileSync(REVIEWS_PATH, "utf-8"));
-  } catch {
-    return {};
-  }
-}
-
-function writeStore(store: ReviewStore): void {
-  writeFileSync(REVIEWS_PATH, JSON.stringify(store, null, 2));
-}
 
 interface RouteContext {
   params: { slug: string };
@@ -28,9 +11,8 @@ export async function GET(_req: Request, { params }: RouteContext) {
   const skill = SKILLS.find((s) => s.slug === params.slug);
   if (!skill) return NextResponse.json({ error: "Skill not found." }, { status: 404 });
 
-  const store = readStore();
-  const persisted = store[params.slug] ?? [];
-  return NextResponse.json({ reviews: persisted });
+  const reviews = await kv.lrange<Review>(`reviews:${params.slug}`, 0, -1);
+  return NextResponse.json({ reviews: reviews ?? [] });
 }
 
 export async function POST(req: Request, { params }: RouteContext) {
@@ -63,9 +45,7 @@ export async function POST(req: Request, { params }: RouteContext) {
     date: new Date().toISOString(),
   };
 
-  const store = readStore();
-  store[params.slug] = [review, ...(store[params.slug] ?? [])];
-  writeStore(store);
+  await kv.lpush(`reviews:${params.slug}`, review);
 
   return NextResponse.json({ review }, { status: 201 });
 }

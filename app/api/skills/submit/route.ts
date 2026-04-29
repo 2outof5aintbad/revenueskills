@@ -1,11 +1,8 @@
 import { NextResponse } from "next/server";
-import { readFileSync, writeFileSync } from "fs";
-import { join } from "path";
+import { kv } from "@vercel/kv";
 import { validateSkill } from "@/lib/skillValidator";
 import { generateSkillMarkdown, type SkillFormData } from "@/lib/skillGenerator";
 import type { SkillCategory } from "@/types/skill";
-
-const SUBMISSIONS_PATH = join(process.cwd(), "data", "submissions.json");
 
 const VALID_CATEGORIES: SkillCategory[] = [
   "sales",
@@ -23,18 +20,6 @@ export interface Submission {
   score: number;
   skillMd: string;
   formData: SkillFormData;
-}
-
-function readSubmissions(): Submission[] {
-  try {
-    return JSON.parse(readFileSync(SUBMISSIONS_PATH, "utf-8"));
-  } catch {
-    return [];
-  }
-}
-
-function writeSubmissions(submissions: Submission[]): void {
-  writeFileSync(SUBMISSIONS_PATH, JSON.stringify(submissions, null, 2));
 }
 
 export async function POST(req: Request) {
@@ -91,9 +76,7 @@ export async function POST(req: Request) {
     formData,
   };
 
-  const submissions = readSubmissions();
-  submissions.push(submission);
-  writeSubmissions(submissions);
+  await kv.lpush("submissions", submission);
 
   return NextResponse.json({ id: submission.id, score: validation.score }, { status: 201 });
 }
