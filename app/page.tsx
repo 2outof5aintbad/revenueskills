@@ -1,58 +1,110 @@
 import Link from "next/link";
 import SkillCard from "@/components/SkillCard";
 import SectionHeader from "@/components/SectionHeader";
-import { TRENDING_SKILLS, TOP_RATED_SKILLS, RECENTLY_UPDATED_SKILLS, SKILLS } from "@/lib/skills";
+import { SKILLS } from "@/lib/skills";
 import { FEATURED_BUNDLES } from "@/lib/bundles";
 
-const totalInstalls = SKILLS.reduce((sum, s) => sum + s.installs, 0);
+// ── Customer moment cards ────────────────────────────────────────────────────
 
-const SOCIAL_PROOF = [
+const CUSTOMER_MOMENTS = [
   {
-    quote: "Changed how I prep for every enterprise call. Closed my last two deals faster because I stopped missing the Economic Buyer early.",
-    author: "@jenna.torres",
-    skill: "MEDDPICC Discovery Prep",
-    rating: 5,
+    icon: "🔍",
+    title: "Prep for discovery",
+    description: "Map your MEDDPICC gaps and build probing questions before the call.",
+    href: "/skill/meddpicc-discovery-prep",
   },
   {
-    quote: "I run this before every QBR and exec visit. The brief it produces is genuinely better than what I used to put together manually in an hour.",
-    author: "@marcus.webb",
-    skill: "Account Prep Brief",
-    rating: 5,
+    icon: "🎯",
+    title: "Build a demo story",
+    description: "Turn account context into a narrative that speaks to your buyer's pain.",
+    href: "/skill/account-prep-brief",
   },
   {
-    quote: "This is my most-used skill by a mile. I send a follow-up within 5 minutes of every call now. My response rate from prospects went up noticeably.",
-    author: "@nina.patel",
-    skill: "Call Follow-Up Generator",
-    rating: 5,
+    icon: "📋",
+    title: "Generate a demo flow",
+    description: "Structure your demo around outcomes, not features.",
+    href: "/marketplace?category=sales",
+  },
+  {
+    icon: "✉️",
+    title: "Write a follow-up email",
+    description: "Convert call notes into a polished follow-up in under 60 seconds.",
+    href: "/skill/call-followup-generator",
+  },
+  {
+    icon: "💰",
+    title: "Build a business case",
+    description: "Generate a CFO-ready ROI model from your opportunity data.",
+    href: "/skill/roi-business-case-builder",
+  },
+  {
+    icon: "🤝",
+    title: "Prep for exec alignment",
+    description: "Brief your champion and arm them to sell internally on your behalf.",
+    href: "/skill/champion-letter-generator",
   },
 ];
 
+// ── Role cards ───────────────────────────────────────────────────────────────
+
+const ROLES = [
+  {
+    icon: "⚙️",
+    role: "Sales Engineer",
+    useCases: ["Build technical discovery plans", "Generate demo flows from account context", "Prep for competitive technical objections"],
+    href: "/marketplace?category=sales",
+  },
+  {
+    icon: "🏢",
+    role: "Account Executive",
+    useCases: ["Run MEDDPICC gap analysis", "Build ROI business cases", "Generate champion letters for internal selling"],
+    href: "/bundles/enterprise-deal-kit",
+  },
+  {
+    icon: "🤝",
+    role: "Customer Success Manager",
+    useCases: ["Score renewal risk early", "Build QBR outlines in minutes", "Identify expansion opportunities before renewal"],
+    href: "/bundles/customer-success-playbook",
+  },
+];
+
+// ── Featured skills (Salesforce-specific copy) ───────────────────────────────
+
+const FEATURED_SKILL_SLUGS = [
+  "meddpicc-discovery-prep",
+  "account-prep-brief",
+  "roi-business-case-builder",
+];
+
 export default function HomePage() {
+  const featuredSkills = FEATURED_SKILL_SLUGS
+    .map((slug) => SKILLS.find((s) => s.slug === slug))
+    .filter(Boolean) as typeof SKILLS;
+
   return (
     <div>
 
-      {/* ── Hero ── */}
+      {/* ── 1. Hero ── */}
       <section className="bg-white border-b border-surface-200">
         <div className="max-w-5xl mx-auto px-6 pt-20 pb-20">
           <div className="max-w-2xl">
             <span className="inline-flex items-center gap-2 text-xs font-semibold text-brand-600 uppercase tracking-widest mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-600 inline-block" />
-              AI Skills for Revenue Teams
+              Peer-built · Free · Salesforce revenue teams
             </span>
             <h1 className="text-5xl font-bold text-navy-900 mb-5 leading-[1.1] tracking-tight">
-              Close more deals.<br />
-              <span className="text-brand-600">Powered by AI.</span>
+              AI Skills for Salesforce<br />
+              <span className="text-brand-600">Revenue Teams.</span>
             </h1>
             <p className="text-lg text-ink-500 leading-relaxed mb-8 max-w-xl">
-              RevenueSkills gives your team instant access to battle-tested Claude AI skills —
-              from MEDDPICC discovery to ROI modeling. Install in seconds. Win more often.
+              Battle-tested prompts and workflows for SEs, AEs, and CSMs preparing for real customer moments — discovery, demos, follow-ups, and deal strategy.
             </p>
             <div className="flex items-center gap-3">
-              <Link href="/marketplace" className="btn-primary px-6 py-3 text-base">
-                Browse Skills
+              <Link href="#moments" className="btn-primary px-6 py-3 text-base">
+                Start with your next customer moment
               </Link>
-              <Link href="/categories" className="btn-secondary px-6 py-3 text-base">
-                Explore by Category
+              <Link href="/marketplace" className="btn-secondary px-6 py-3 text-base">
+                Browse all skills
               </Link>
             </div>
           </div>
@@ -60,14 +112,14 @@ export default function HomePage() {
       </section>
 
       {/* ── Stats bar ── */}
-      <section className="bg-navy-900 border-b border-navy-800">
+      <section className="bg-navy-900">
         <div className="max-w-5xl mx-auto px-6 py-5">
           <div className="flex flex-wrap items-center gap-8 sm:gap-16">
             {[
-              { value: SKILLS.length.toString(), label: "Skills Available" },
-              { value: totalInstalls.toLocaleString() + "+", label: "Total Installs" },
+              { value: SKILLS.length.toString(), label: "Skills" },
               { value: "6", label: "Categories" },
-              { value: "Free", label: "Always" },
+              { value: "Free", label: "For Salesforce peers" },
+              { value: "Real", label: "Field workflows" },
             ].map(({ value, label }) => (
               <div key={label}>
                 <p className="text-xl font-bold text-white tabular-nums">{value}</p>
@@ -78,131 +130,139 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── 2. Why I built this ── */}
+      <section className="bg-surface-100 border-y border-surface-200">
+        <div className="max-w-5xl mx-auto px-6 py-14">
+          <div className="max-w-2xl mx-auto text-center">
+            <p className="label mb-4">Why I built this</p>
+            <p className="text-base text-ink-600 leading-relaxed mb-2">
+              I built RevenueSkills to give Salesforce sellers and solution engineers a practical library of AI workflows they can use before customer calls, demos, follow-ups, and internal deal reviews.
+            </p>
+            <p className="text-sm text-ink-400 leading-relaxed">
+              This is not an official Salesforce product — it&apos;s a peer-built resource to help us move faster and share what works.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <div className="page pt-14">
 
-        {/* ── Trending ── */}
+        {/* ── 3. Customer moments ── */}
+        <section className="section" id="moments">
+          <SectionHeader
+            title="Start with your next customer moment"
+            description="Pick the situation you're preparing for"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {CUSTOMER_MOMENTS.map(({ icon, title, description, href }) => (
+              <Link
+                key={title}
+                href={href}
+                className="group flex items-start gap-4 p-5 bg-white border border-surface-200 rounded-2xl shadow-card hover:shadow-card-hover hover:border-brand-200 hover:-translate-y-px transition-all duration-200"
+              >
+                <span className="text-2xl leading-none shrink-0 mt-0.5">{icon}</span>
+                <div>
+                  <p className="text-sm font-bold text-navy-900 group-hover:text-brand-600 transition-colors mb-1">
+                    {title}
+                  </p>
+                  <p className="text-xs text-ink-400 leading-relaxed">{description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* ── 4. Featured skills ── */}
         <section className="section">
           <SectionHeader
-            title="Trending This Month"
-            description="Most-installed skills across revenue teams"
+            title="Featured Skills"
+            description="Most-used across Salesforce revenue teams"
             href="/marketplace"
             hrefLabel="See all"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {TRENDING_SKILLS.map((skill) => (
+            {featuredSkills.map((skill) => (
               <SkillCard key={skill.id} skill={skill} />
             ))}
           </div>
         </section>
 
-        {/* ── Bundles by role ── */}
+        {/* ── 5. Built for your role ── */}
         <section className="section">
           <SectionHeader
-            title="Skill Bundles by Role"
-            description="Curated collections for every position on your revenue team"
+            title="Built for your role"
+            description="Find skills matched to how you work"
             href="/bundles"
             hrefLabel="See all bundles"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {FEATURED_BUNDLES.map((bundle) => {
-              const bundleSkills = bundle.skillSlugs
-                .map((slug) => SKILLS.find((s) => s.slug === slug))
-                .filter(Boolean) as typeof SKILLS;
-              const totalBundleInstalls = bundleSkills.reduce((sum, s) => sum + s.installs, 0);
-              return (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {ROLES.map(({ icon, role, useCases, href }) => (
+              <div key={role} className="bg-white border border-surface-200 rounded-2xl p-5 shadow-card flex flex-col">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <span className="text-xl leading-none">{icon}</span>
+                  <h3 className="text-sm font-bold text-navy-900">{role}</h3>
+                </div>
+                <ul className="space-y-2 flex-1 mb-5">
+                  {useCases.map((uc) => (
+                    <li key={uc} className="flex gap-2 text-xs text-ink-500">
+                      <span className="text-brand-600 font-bold shrink-0">→</span>
+                      {uc}
+                    </li>
+                  ))}
+                </ul>
                 <Link
-                  key={bundle.slug}
-                  href={`/bundles/${bundle.slug}`}
-                  className="group flex flex-col bg-white border border-surface-200 rounded-2xl p-5 shadow-card hover:shadow-card-hover hover:-translate-y-px transition-all duration-200"
+                  href={href}
+                  className="text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors"
                 >
-                  <div className="flex items-start justify-between mb-3">
-                    <span className="text-2xl leading-none">{bundle.icon}</span>
-                    {bundle.featured && (
-                      <span className="label px-2 py-0.5 rounded-full bg-brand-50 text-brand-600 border border-brand-100">
-                        Featured
-                      </span>
-                    )}
-                  </div>
-                  <div className="label text-ink-400 mb-1">{bundle.role}</div>
-                  <h3 className="text-sm font-bold text-navy-900 mb-1.5 group-hover:text-brand-600 transition-colors leading-snug">
-                    {bundle.name}
-                  </h3>
-                  <p className="text-sm text-ink-500 leading-relaxed mb-4 flex-1">
-                    {bundle.tagline}
-                  </p>
-                  <div className="flex items-center justify-between pt-3 border-t border-surface-100 text-xs text-ink-400">
-                    <span>{bundleSkills.length} skills</span>
-                    <span>{totalBundleInstalls.toLocaleString()} installs</span>
-                  </div>
+                  View skills →
                 </Link>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* ── Social proof ── */}
+        {/* ── 6. How it works ── */}
         <section className="section">
           <SectionHeader
-            title="What Reps Are Saying"
-            description="Real results from real revenue professionals"
-            href="/marketplace"
-            hrefLabel="See all skills"
+            title="How it works"
+            description="Three steps from skill to output"
           />
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {SOCIAL_PROOF.map(({ quote, author, skill, rating }) => (
-              <div key={author} className="bg-white border border-surface-200 rounded-2xl p-5 shadow-card flex flex-col gap-4">
-                <div className="flex gap-0.5">
-                  {Array.from({ length: rating }).map((_, i) => (
-                    <svg key={i} className="w-3.5 h-3.5 text-amber-400 fill-current" viewBox="0 0 20 20" aria-hidden>
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              {
+                step: "1",
+                title: "Pick the customer moment",
+                body: "Find the skill that matches your situation — discovery, demo, follow-up, or deal strategy.",
+              },
+              {
+                step: "2",
+                title: "Copy the skill into Claude",
+                body: "Click \"Copy SKILL.md\" and paste it into a Claude Project or the start of any Claude conversation.",
+              },
+              {
+                step: "3",
+                title: "Add your account context",
+                body: "Drop in your account notes, opportunity data, or meeting goals. Claude does the rest.",
+              },
+            ].map(({ step, title, body }) => (
+              <div key={step} className="flex gap-4">
+                <div className="w-9 h-9 rounded-full bg-navy-900 text-white text-sm font-bold flex items-center justify-center shrink-0">
+                  {step}
                 </div>
-                <p className="text-sm text-ink-700 leading-relaxed flex-1">&ldquo;{quote}&rdquo;</p>
                 <div>
-                  <p className="text-xs font-semibold text-ink-900">{author}</p>
-                  <p className="text-xs text-ink-400">{skill}</p>
+                  <p className="text-sm font-bold text-navy-900 mb-1">{title}</p>
+                  <p className="text-sm text-ink-500 leading-relaxed">{body}</p>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* ── Top Rated ── */}
-        <section className="section">
-          <SectionHeader
-            title="Top Rated"
-            description="Highest-rated by the community"
-            href="/marketplace"
-            hrefLabel="See all"
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {TOP_RATED_SKILLS.map((skill) => (
-              <SkillCard key={skill.id} skill={skill} />
-            ))}
-          </div>
-        </section>
-
-        {/* ── Recently Updated ── */}
-        <section className="section">
-          <SectionHeader
-            title="Recently Updated"
-            description="Latest releases and improvements"
-            href="/marketplace"
-            hrefLabel="See all"
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {RECENTLY_UPDATED_SKILLS.map((skill) => (
-              <SkillCard key={skill.id} skill={skill} />
-            ))}
-          </div>
-        </section>
-
-        {/* ── CTA banner ── */}
+        {/* ── 7. Submit a skill ── */}
         <section className="mb-16 rounded-2xl bg-navy-900 px-8 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
-            <h2 className="text-xl font-bold text-white mb-1">Built a skill your team loves?</h2>
-            <p className="text-sm text-blue-200">Share it with the community and help other reps win.</p>
+            <h2 className="text-xl font-bold text-white mb-1">Have a workflow that works?</h2>
+            <p className="text-sm text-blue-200">Share it with the team. If it&apos;s useful in the field, it belongs here.</p>
           </div>
           <Link
             href="/submit"
