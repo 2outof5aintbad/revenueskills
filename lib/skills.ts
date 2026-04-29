@@ -1228,6 +1228,556 @@ Weak ICP fit or small ACV potential. Assign to sequences only.
       },
     ],
   },
+
+  // ── High-Impact New Skills ─────────────────────────────────────────────────
+
+  {
+    id: "demo-story-builder",
+    name: "Demo Story Builder",
+    slug: "demo-story-builder",
+    description:
+      "Turns your account research, discovery notes, and opportunity context into a narrative demo script tied to the customer's specific outcomes. Structures the demo around their pain — not your product features — so every click lands with meaning. Built for SEs who want to walk in with a story, not a slide deck.",
+    category: "sales",
+    tags: ["demo", "sales engineer", "storytelling", "discovery", "SE"],
+    author: "@se-toolkit",
+    authorBio:
+      "Senior Solutions Engineer with 9 years running technical demos for enterprise deals from $100K to $12M. Believes every great demo starts with a story, not a feature list.",
+    installs: 4_820,
+    rating: 4.9,
+    featured: true,
+    triggers: [
+      "Build a demo story for GlobalBank",
+      "Turn my discovery notes into a demo narrative",
+      "Create a demo script for this opportunity",
+      "Help me structure my demo for the CFO and VP Engineering",
+      "Write a demo story from my account context",
+    ],
+    exampleOutput: `## Demo Story — GlobalBank // Platform Migration
+*Prepared for: CFO (David Harrington) + VP Engineering (Lisa Park)*
+
+---
+
+**Opening hook (90 seconds)**
+"Last quarter, your Q1 earnings call cited 'infrastructure complexity' as a top-3 operational risk. I want to show you today how three teams just like yours eliminated that risk — not in months, but in weeks. Let me show you what that looks like for GlobalBank."
+
+---
+
+**Act 1 — The world before (2 min)**
+*Pain to surface: 3 FTEs doing manual reconciliation across 4 systems.*
+Show: The current state. Don't skip this. Let them feel the friction.
+> Demo flow: Navigate to the legacy reconciliation view. Click through the manual steps. Count them out loud — "That's 14 clicks to reconcile one record. Multiply that by 4,000 records a month."
+
+---
+
+**Act 2 — The moment it changes (5 min)**
+*Outcome: Reconciliation drops from 240 hours/month to under 50.*
+Show: Automated reconciliation running in real time.
+> Demo flow: Trigger the automation. Watch it run. Surface the audit trail. "Everything Lisa's team needs for compliance — auto-generated, timestamped, exportable."
+
+**CFO moment:** "This is where your $312K goes from cost to capacity. Those 3 FTEs aren't eliminated — they move to higher-value work."
+
+---
+
+**Act 3 — What's possible next (3 min)**
+*Expansion: Finance team onboarding, security review path.*
+Show: The roadmap view. Keep it brief — the deal is about today, not the future.
+> Demo flow: Show the onboarding wizard. "Your security review is pre-scoped — we've done this with 6 regulated financial institutions in the last 18 months."
+
+---
+
+**Closing question**
+"Based on what you've seen — does this solve the infrastructure complexity problem you cited in Q1, or is there a dimension we haven't addressed?"
+
+---
+*SE notes: If Lisa asks about migration timeline, go to the implementation slide. If David asks about competitors, use the TCO comparison. Don't volunteer either unprompted.*`,
+    reviews: [
+      {
+        id: "r1",
+        rating: 5,
+        text: "This changed how I approach every demo. I used to start with product capabilities — now I start with their pain. Won three deals in a row where the SE before me had lost on the same account. The story structure is the difference.",
+        author: "@tyler.brooks",
+        date: "2026-04-20T09:00:00Z",
+      },
+      {
+        id: "r2",
+        rating: 5,
+        text: "The 'Act 1 — the world before' section is something I never thought to build into my demos. Letting the customer feel the pain before showing the solution — my close rate on technical evaluations went from 44% to 67% in one quarter.",
+        author: "@sarah.kim",
+        date: "2026-03-15T14:30:00Z",
+      },
+      {
+        id: "r3",
+        rating: 5,
+        text: "My manager sat in on a demo I ran with this script and said it was the best she'd ever seen from our team. I've used it for every enterprise demo since.",
+        author: "@marco.diaz",
+        date: "2026-02-08T11:15:00Z",
+      },
+    ],
+    versions: [
+      {
+        version: "2.0.0",
+        changeSummary: "Restructured output into 3-act narrative format. Added persona-specific 'moment' callouts for CFO and technical buyers. Included SE coaching notes.",
+        createdAt: "2026-03-20T00:00:00Z",
+      },
+      {
+        version: "1.0.0",
+        changeSummary: "Initial release.",
+        createdAt: "2025-12-01T00:00:00Z",
+      },
+    ],
+  },
+
+  {
+    id: "stall-buster",
+    name: "Stall Buster",
+    slug: "stall-buster",
+    description:
+      "Diagnoses why a deal has gone quiet and generates a specific re-engagement plan. Identifies the most likely root cause — budget freeze, champion disengagement, competitive threat, internal priority shift, or paper process stall — and returns tailored plays for each. For every AE with deals that have stopped moving.",
+    category: "sales",
+    tags: ["stalled deals", "re-engagement", "pipeline", "champion", "AE"],
+    author: "@sales-ai",
+    authorBio:
+      "Enterprise sales coach and toolbuilder. 12 years in SaaS sales, 4 years building Claude skills for revenue teams. Focused on structured methodology — MEDDPICC, SPIN, Challenger.",
+    installs: 5_640,
+    rating: 4.8,
+    featured: true,
+    triggers: [
+      "My deal at Acme Corp has gone dark — help me re-engage",
+      "This opportunity has stalled, what do I do?",
+      "I haven't heard from my champion in 3 weeks",
+      "Diagnose why this deal stopped moving",
+      "Help me unstick this deal",
+    ],
+    exampleOutput: `## Stall Diagnosis — RetailCo // $185K // Stalled 31 days
+
+**Most likely root cause: Champion disengagement**
+Confidence: High
+
+Your last three touchpoints went unanswered. The champion (Marcus, Dir. RevOps) engaged consistently until the internal procurement brief was requested — then went quiet. This pattern typically means one of three things: (1) internal pushback he hasn't shared, (2) a competing priority consumed his bandwidth, or (3) he needs something from you to move forward and hasn't said so.
+
+---
+
+**Diagnostic questions to answer before re-engaging**
+- Has anything changed at RetailCo organizationally in the last 30 days? (Check LinkedIn, news)
+- Was Marcus the one who requested the procurement brief, or was it someone above him?
+- Do you have any other contact at RetailCo who could give you a read?
+
+---
+
+**Re-engagement plays (choose one)**
+
+**Play 1 — The direct check-in (lowest friction)**
+> "Marcus — I want to make sure I'm not creating noise at a bad time. Are we still aligned on the May timeline, or has something shifted on your end? Happy to adjust."
+*Use when:* You have a strong relationship and believe the cause is bandwidth, not politics.
+
+**Play 2 — The value re-anchor**
+> "Marcus — I was putting together our Q2 close plan and realized I never sent you the updated ROI model with the Finance team expansion included. It changes the payback period to 6 months. Want me to send it over, or would it be better to walk through it together?"
+*Use when:* You have new information or collateral that gives you a legitimate reason to reach out.
+
+**Play 3 — The executive bridge**
+Re-engage one level up — not to go around Marcus, but to create external momentum.
+> "[CFO name] — I wanted to follow up on our conversation last month. Marcus and I have been working through the details, and I wanted to make sure the Q2 timeline still aligns with your team's priorities before we finalize."
+*Use when:* You have an existing relationship with a senior stakeholder and the deal is material enough to justify the move.
+
+---
+
+**What not to do**
+- Don't send a "just checking in" email. It signals desperation and gives them nothing to respond to.
+- Don't assume the deal is dead. Silence is almost never a no — it's usually a distraction.
+- Don't re-send the proposal. It signals you have nothing new to offer.
+
+**Recommended first move:** Play 1 today. If no response in 72 hours, Play 2. If still no response after 5 business days, consider Play 3 or a CRM close-out conversation with your manager.`,
+    reviews: [
+      {
+        id: "r1",
+        rating: 5,
+        text: "I had 6 stalled deals at the start of the quarter. Ran this on all of them. Re-engaged 4, closed 2. The diagnostic framework alone — figuring out WHY the deal stalled before you act — is something no one ever taught me.",
+        author: "@kate.morrison",
+        date: "2026-04-12T10:30:00Z",
+      },
+      {
+        id: "r2",
+        rating: 5,
+        text: "The 'what not to do' section is worth the install alone. I used to send 'just checking in' emails constantly. Stopped completely. My re-engagement rate doubled.",
+        author: "@james.liu",
+        date: "2026-03-08T15:45:00Z",
+      },
+      {
+        id: "r3",
+        rating: 4,
+        text: "Excellent framework. Works best when you give it specific context — last interaction date, what was last requested, any org changes. The more specific you are, the sharper the diagnosis.",
+        author: "@anna.petrov",
+        date: "2026-02-01T09:00:00Z",
+      },
+    ],
+    versions: [
+      {
+        version: "2.1.0",
+        changeSummary: "Added confidence scoring on root cause diagnosis. Expanded re-engagement plays to cover 5 stall types. Added 'what not to do' section based on common mistakes.",
+        createdAt: "2026-03-05T00:00:00Z",
+      },
+      {
+        version: "1.0.0",
+        changeSummary: "Initial release.",
+        createdAt: "2025-10-20T00:00:00Z",
+      },
+    ],
+  },
+
+  {
+    id: "poc-success-plan-builder",
+    name: "POC Success Plan Builder",
+    slug: "poc-success-plan-builder",
+    description:
+      "Builds a formal Proof of Concept success plan with agreed scope, success criteria, exit criteria, timeline, and owners — before the POC starts. Eliminates post-POC goalposts, ensures both sides are aligned on what 'success' means, and creates a written document the customer co-signs. The difference between a POC that closes and one that drags.",
+    category: "sales",
+    tags: ["POC", "proof of concept", "success criteria", "technical evaluation", "SE"],
+    author: "@se-toolkit",
+    authorBio:
+      "Senior Solutions Engineer with 9 years running technical demos for enterprise deals from $100K to $12M. Believes every great demo starts with a story, not a feature list.",
+    installs: 3_210,
+    rating: 4.8,
+    featured: false,
+    triggers: [
+      "Build a POC success plan for GlobalBank",
+      "Create a proof of concept plan for this technical evaluation",
+      "Define success criteria for our POC with TechCo",
+      "Write a POC agreement for this opportunity",
+      "Help me scope a technical evaluation",
+    ],
+    exampleOutput: `## POC Success Plan — GlobalBank // Platform Migration Evaluation
+*Version 1.0 | Prepared: [Date] | Review by: [Date + 3 days]*
+
+---
+
+**POC Objective**
+Validate that [Platform] can automate reconciliation across GlobalBank's 4 core systems and meet their security and compliance requirements — within the agreed timeline and without custom development.
+
+---
+
+**Scope**
+
+*In scope:*
+- Automated reconciliation for Systems A, B, C, D
+- Integration with existing Salesforce and NetSuite instances
+- Audit trail generation meeting SOC 2 Type II requirements
+- User provisioning for up to 10 test users
+
+*Out of scope:*
+- Finance team onboarding (post-POC phase)
+- Custom API development
+- Historical data migration
+
+---
+
+**Success Criteria**
+*For the POC to be considered successful, ALL of the following must be met:*
+
+| Criteria | Measurement | Target | Owner |
+|---|---|---|---|
+| Reconciliation automation | % of records processed without manual intervention | ≥ 95% | SE + IT |
+| Processing time | Time to reconcile monthly close | < 4 hours (vs. current 48) | SE |
+| Audit trail | Compliance team sign-off | Written approval | Lisa Park (VP Eng) |
+| Security review | InfoSec questionnaire completion | Approved | GlobalBank InfoSec |
+| User acceptance | Power user satisfaction score | ≥ 4/5 from 3 pilot users | Marcus Webb |
+
+---
+
+**Exit Criteria**
+*The POC will be considered complete (pass or fail) when:*
+- All 5 success criteria have been measured, OR
+- The POC end date has been reached (whichever comes first)
+
+*If criteria are not met:* Both parties agree to a written debrief within 5 business days. No commercial pressure will be applied during the debrief period.
+
+---
+
+**Timeline**
+
+| Week | Milestone | Owner |
+|---|---|---|
+| Week 1 | Environment setup, data connection, user provisioning | SE + IT |
+| Week 2 | Reconciliation automation live, initial testing | SE + Marcus |
+| Week 3 | Security review, compliance validation | InfoSec + SE |
+| Week 4 | User acceptance testing, success criteria review | All |
+| Day 30 | POC readout and decision | Both parties |
+
+---
+
+**Contacts & Owners**
+
+| Role | Name | Responsibility |
+|---|---|---|
+| Executive Sponsor | David Harrington (CFO) | Final go/no-go decision |
+| Technical Lead | Lisa Park (VP Eng) | Environment access, security sign-off |
+| Champion | Marcus Webb (Dir. RevOps) | Day-to-day coordination, UAT |
+| SE | [Your name] | Technical delivery, success criteria tracking |
+| AE | [AE name] | Commercial coordination, timeline management |
+
+---
+
+**Mutual Commitments**
+- GlobalBank will provide environment access by [Date]
+- [Vendor] will provide a dedicated SE for the POC duration
+- Weekly check-in call every [Day] at [Time]
+- Either party can raise a blocker within 24 hours via [Channel]
+
+---
+*Signatures:*
+GlobalBank: _________________ Date: _______
+[Vendor]: _________________ Date: _______`,
+    reviews: [
+      {
+        id: "r1",
+        rating: 5,
+        text: "Before this skill, I'd done 40+ POCs where the goalposts moved at the end. Since I started using this plan — zero. The exit criteria section is the secret weapon. Customers don't realize they've agreed to it until it saves you.",
+        author: "@priya.sharma",
+        date: "2026-04-08T11:00:00Z",
+      },
+      {
+        id: "r2",
+        rating: 5,
+        text: "My VP made this mandatory for all technical evaluations over $150K after seeing my win rate. Three deals closed in Q1 that would have stalled — all because we had a signed POC plan.",
+        author: "@evan.wright",
+        date: "2026-03-01T09:30:00Z",
+      },
+      {
+        id: "r3",
+        rating: 4,
+        text: "The success criteria table format is perfect for getting customer sign-off. I send the draft POC plan before the kickoff call and ask them to edit it — they always do, which means they're engaged and co-owning it.",
+        author: "@lisa.nguyen",
+        date: "2026-01-20T14:00:00Z",
+      },
+    ],
+    versions: [
+      {
+        version: "1.3.0",
+        changeSummary: "Added exit criteria section and mutual commitments. Improved success criteria table with measurement methodology. Added signature block.",
+        createdAt: "2026-02-15T00:00:00Z",
+      },
+      {
+        version: "1.0.0",
+        changeSummary: "Initial release.",
+        createdAt: "2025-11-10T00:00:00Z",
+      },
+    ],
+  },
+
+  {
+    id: "multi-threading-map",
+    name: "Multi-Threading Map",
+    slug: "multi-threading-map",
+    description:
+      "Analyzes your current stakeholder coverage in a deal and identifies who you're missing, why they matter, and exactly how to get introduced. Single-threading is the #1 deal-killer in enterprise sales — this skill surfaces the gaps before they surface as a lost deal.",
+    category: "sales",
+    tags: ["multi-threading", "stakeholders", "enterprise", "relationship mapping", "AE"],
+    author: "@sales-ai",
+    authorBio:
+      "Enterprise sales coach and toolbuilder. 12 years in SaaS sales, 4 years building Claude skills for revenue teams. Focused on structured methodology — MEDDPICC, SPIN, Challenger.",
+    installs: 4_105,
+    rating: 4.7,
+    featured: false,
+    triggers: [
+      "Map the stakeholders I'm missing in my GlobalBank deal",
+      "Who else do I need to be talking to at TechCo?",
+      "Am I single-threaded on this deal?",
+      "Build a stakeholder map for this opportunity",
+      "Who should I multi-thread to at this account?",
+    ],
+    exampleOutput: `## Multi-Threading Map — GlobalBank // Enterprise Expansion ($420K)
+
+**Current Coverage**
+| Stakeholder | Title | Relationship | Risk |
+|---|---|---|---|
+| Marcus Webb | Dir. RevOps | Champion — strong | Low |
+| Lisa Park | VP Engineering | Known — moderate engagement | Medium |
+| David Harrington | CFO | Identified — no direct contact | HIGH |
+| [New CTO] | CTO | Unknown — just joined | HIGH |
+
+**Single-threading risk: HIGH**
+You have one strong relationship (Marcus) and three critical stakeholders with zero or weak coverage. If Marcus leaves, gets sidelined, or loses internal capital — this deal is over.
+
+---
+
+**Missing Stakeholders — Priority Order**
+
+**1. David Harrington, CFO — CRITICAL**
+*Why he matters:* Final economic buyer. $420K requires CFO sign-off. He cited infrastructure complexity in Q1 earnings — this deal is directly relevant to his stated priorities.
+*How to get introduced:*
+- Direct ask to Marcus: "David's language in the Q1 call maps exactly to what we're solving. Would he be open to a 20-minute conversation before we finalize the commercial terms?"
+- Alternate: Ask Lisa to facilitate — she has direct CFO access and has seen the pilot results.
+*What to say when you get there:* Lead with the Q1 earnings language. Don't pitch — ask if your solution addresses the risk he named publicly.
+
+**2. [New CTO] — HIGH PRIORITY**
+*Why they matter:* New CTOs review all major infrastructure decisions in their first 90 days. If they don't know this deal exists, they'll pump the brakes at signing — or worse, reopen the evaluation.
+*How to get introduced:*
+- Ask Lisa directly: "I want to make sure [CTO name] is comfortable with the direction before we finalize. Would it make sense for me to send a brief technical summary she could share, or would a 30-minute intro call be more useful?"
+*What to say:* New CTOs want to understand, not be sold. Frame as: "Here's what your team has already validated — I want to make sure this aligns with your technical direction."
+
+**3. Procurement / Legal — MEDIUM**
+*Why they matter:* Paper process unknown. $420K deals typically require procurement review and legal redline. Starting this conversation now prevents a 6-week surprise at Stage 4.
+*How to get introduced:* Ask Marcus: "Who owns the contract process on your side once we reach agreement? I'd like to get them looped in early so we don't hit surprises."
+
+---
+
+**30-Day Multi-Threading Plan**
+- Week 1: Request CFO intro via Marcus
+- Week 1: Ask Lisa to send CTO a 1-page technical summary
+- Week 2: CFO intro call
+- Week 2: Identify procurement contact
+- Week 3: CTO intro or async briefing
+- Week 4: All key stakeholders have had direct contact before commercial proposal
+
+**Confidence after multi-threading:** Deal survivability goes from 40% (single-threaded) to 75%+ if coverage plan is executed.`,
+    reviews: [
+      {
+        id: "r1",
+        rating: 5,
+        text: "I lost a $600K deal last year because my champion got laid off and I had no other relationships. I run this on every deal above $100K now, without exception. It's the most important risk mitigation skill in the catalog.",
+        author: "@derek.thompson",
+        date: "2026-04-15T13:00:00Z",
+      },
+      {
+        id: "r2",
+        rating: 5,
+        text: "The 'how to get introduced' section for each missing stakeholder is what makes this different from a generic stakeholder map. It doesn't just tell you who you're missing — it tells you exactly what to say to fix it.",
+        author: "@rachel.wong",
+        date: "2026-03-10T10:15:00Z",
+      },
+      {
+        id: "r3",
+        rating: 4,
+        text: "Very strong for AEs running complex deals. Works best when you give it a complete picture of who you currently have — be honest about weak relationships, not just missing ones.",
+        author: "@sam.okafor",
+        date: "2026-02-14T09:30:00Z",
+      },
+    ],
+    versions: [
+      {
+        version: "1.4.0",
+        changeSummary: "Added 30-day multi-threading action plan. Improved single-threading risk scoring. Added confidence rating showing deal survivability before/after coverage.",
+        createdAt: "2026-03-10T00:00:00Z",
+      },
+      {
+        version: "1.0.0",
+        changeSummary: "Initial release.",
+        createdAt: "2025-12-05T00:00:00Z",
+      },
+    ],
+  },
+
+  {
+    id: "expansion-opportunity-scanner",
+    name: "Expansion Opportunity Scanner",
+    slug: "expansion-opportunity-scanner",
+    description:
+      "Analyzes an existing customer account — usage patterns, team structure, business goals, and recent conversations — to surface specific expansion opportunities with rationale and a recommended approach. Helps CSMs and AEs identify upsell and cross-sell plays before renewal conversations start, when they're easiest to have.",
+    category: "customer-success",
+    tags: ["expansion", "upsell", "cross-sell", "customer success", "account growth"],
+    author: "@cs-playbook",
+    authorBio:
+      "Customer Success leader who has run QBRs for accounts ranging from $50K to $8M ARR. Believes the best QBR is the one your customer brings their boss to.",
+    installs: 2_890,
+    rating: 4.7,
+    featured: false,
+    triggers: [
+      "Scan GlobalBank for expansion opportunities",
+      "Where can I grow this account?",
+      "Find upsell opportunities in my book of business",
+      "What's the expansion play for this customer?",
+      "Identify cross-sell opportunities at RetailCo",
+    ],
+    exampleOutput: `## Expansion Opportunity Scan — GlobalBank // Current ARR: $310K
+
+**Expansion Potential: HIGH**
+Estimated addressable expansion: $180K–$240K ARR
+
+---
+
+**Opportunity 1 — Finance Team Seat Expansion**
+*Type:* Upsell (additional seats)
+*Estimated ARR:* $85K
+*Confidence:* High
+
+*Signal:* Finance team was identified as an expansion candidate in the original deal. Reconciliation automation has reduced audit prep by 68% — the exact use case Finance would benefit from. Marcus Webb (champion) referenced Finance team interest in the last QBR.
+
+*Why now:* The Q3 audit cycle begins in 6 weeks. Finance leaders are most receptive to new tools immediately before a high-friction period.
+
+*Recommended approach:*
+Ask Marcus to facilitate a 30-minute intro with the Finance Director before the audit cycle starts.
+> "Marcus — the reconciliation results have been strong. I'd love to show your Finance Director how the same workflow could cut their audit prep before Q3. Would you be open to a quick intro?"
+
+---
+
+**Opportunity 2 — Enterprise Platform Tier Upgrade**
+*Type:* Upsell (tier change)
+*Estimated ARR:* $95K incremental
+*Confidence:* Medium
+
+*Signal:* Current license is Professional tier. Usage data shows 47 of 50 seats active — at 94% capacity. Three teams have requested access beyond current provisioned users. At current growth rate, they'll hit the cap in 45–60 days.
+
+*Why now:* Capacity ceilings create natural urgency. Proactively surfacing the upgrade before they hit the wall positions you as a partner, not a vendor trying to upsell.
+
+*Recommended approach:*
+Raise in the next touchpoint before they notice the constraint themselves.
+> "Lisa — I flagged something in the usage data I wanted to bring to you proactively. You're at 94% seat capacity. Before three teams hit a wall, I want to walk you through the Enterprise tier options."
+
+---
+
+**Opportunity 3 — Professional Services: CTO Onboarding**
+*Type:* Cross-sell (services)
+*Estimated ARR:* $45K one-time
+*Confidence:* Low–Medium
+
+*Signal:* New CTO joined 6 weeks ago. CTO onboarding is an open action item. New technical leaders often want a structured architecture review before they fully endorse an incumbent vendor.
+
+*Recommended approach:*
+Position as de-risking for them, not a revenue play for you.
+> "[CTO name] — we've done a technical architecture review for a few customers after leadership transitions. It's typically 2 days, covers integration architecture and your roadmap alignment. Would that be useful as you get oriented?"
+
+---
+
+**Timing Recommendation**
+Start with Opportunity 1 — it has the strongest signal, the clearest champion path, and a natural time hook (Q3 audit). Opportunity 2 can be raised in the same conversation if capacity data supports it. Hold Opportunity 3 for a separate engagement with the CTO.
+
+**Combined expansion target: $180K–$225K ARR**
+Achieving this would bring GlobalBank to $490K–$535K ARR — a natural threshold for an Enterprise Agreement conversation at renewal.`,
+    reviews: [
+      {
+        id: "r1",
+        rating: 5,
+        text: "I used to wait for customers to come to me about expansion. Now I run this scan 90 days before renewal on every account above $100K. Identified $340K in expansion last quarter that I would have missed or brought up too late.",
+        author: "@jennifer.hall",
+        date: "2026-04-18T09:45:00Z",
+      },
+      {
+        id: "r2",
+        rating: 5,
+        text: "The timing recommendations are what elevate this above a generic expansion framework. It doesn't just tell you what to sell — it tells you when the customer is most likely to say yes.",
+        author: "@ben.nakamura",
+        date: "2026-03-12T14:00:00Z",
+      },
+      {
+        id: "r3",
+        rating: 4,
+        text: "Excellent signal-based approach. The confidence ratings on each opportunity are realistic — it doesn't oversell every lead as a sure thing. I trust the output because it's honest about uncertainty.",
+        author: "@claire.martin",
+        date: "2026-02-20T11:30:00Z",
+      },
+    ],
+    versions: [
+      {
+        version: "1.2.0",
+        changeSummary: "Added confidence ratings and timing recommendations per opportunity. Improved signal detection for seat capacity and usage patterns.",
+        createdAt: "2026-02-25T00:00:00Z",
+      },
+      {
+        version: "1.0.0",
+        changeSummary: "Initial release.",
+        createdAt: "2025-12-20T00:00:00Z",
+      },
+    ],
+  },
 ];
 
 export const FEATURED_SKILLS = SKILLS.filter((s) => s.featured);

@@ -17,6 +17,8 @@ export const BUNDLES: Bundle[] = [
       "roi-business-case-builder",
       "champion-letter-generator",
       "objection-reframe-engine",
+      "stall-buster",
+      "multi-threading-map",
     ],
   },
   {
@@ -52,6 +54,25 @@ export const BUNDLES: Bundle[] = [
       "roi-business-case-builder",
       "account-prep-brief",
       "call-followup-generator",
+      "expansion-opportunity-scanner",
+    ],
+  },
+  {
+    id: "se-technical-playbook",
+    slug: "se-technical-playbook",
+    name: "SE Technical Playbook",
+    tagline: "Win the technical win. From demo prep to POC close.",
+    description:
+      "The SE Technical Playbook gives Solution Engineers AI skills for every technical moment in the deal — building a compelling demo narrative, designing a POC that wins, and prepping for competitive technical objections. Built for SEs who want to show up sharp and close the technical win every time.",
+    role: "Solution Engineers",
+    icon: "⚙️",
+    featured: true,
+    skillSlugs: [
+      "demo-story-builder",
+      "poc-success-plan-builder",
+      "account-prep-brief",
+      "meddpicc-discovery-prep",
+      "competitive-battlecard-builder",
     ],
   },
   {
