@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import ConditionalShell from "@/components/ConditionalShell";
+import Nav from "@/components/Nav";
+import WelcomeBanner from "@/components/WelcomeBanner";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -18,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="bg-surface-50 text-ink-900 antialiased">
-        <ConditionalShell>{children}</ConditionalShell>
+        <Nav />
+        <WelcomeBanner />
+        <main>{children}</main>
       </body>
     </html>
   );

@@ -2,27 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Coke microsite scroll animations */
-.coke-fade-in {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
-}
-.coke-fade-in.coke-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Coke hero entrance — CSS keyframes, fires on page load */
-@keyframes coke-hero-in {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.coke-hero-eyebrow { animation: coke-hero-in 0.5s ease-out 0.05s both; }
-.coke-hero-headline { animation: coke-hero-in 0.6s ease-out 0.15s both; }
-.coke-hero-sub     { animation: coke-hero-in 0.6s ease-out 0.28s both; }
-.coke-hero-ctas    { animation: coke-hero-in 0.6s ease-out 0.40s both; }
-
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;
