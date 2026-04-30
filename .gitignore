@@ -23,6 +23,7 @@ Thumbs.db
 
 # Local data (filesystem storage not supported on Vercel)
 data/
+!data/coke.ts
 
 # TypeScript
 tsconfig.tsbuildinfo
