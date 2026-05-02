@@ -76,6 +76,24 @@ export const BUNDLES: Bundle[] = [
     ],
   },
   {
+    id: "agentic-account-builder",
+    slug: "agentic-account-builder",
+    name: "Agentic Account Builder",
+    tagline: "From Slack Canvas to executive-ready microsite in under 2 hours.",
+    description:
+      "The Agentic Account Builder gives Salesforce sellers a complete system for turning account context into a transformation narrative, a structured JSON output, and a demo-ready microsite experience — all in one workflow. Start with the Master Skill to generate both the full executive brief and the AccountSiteConfig JSON in one pass. Refine with the modular skills as needed. Paste the JSON into the microsite generator and go live. Built for AEs, SEs, and RVPs preparing for executive briefings, onsites, and QBRs.",
+    role: "Account Executives, Solutions Engineers, RVPs",
+    icon: "🏗️",
+    featured: true,
+    skillSlugs: [
+      "agentic-account-story-builder",
+      "salesforce-use-case-builder",
+      "data-360-foundation-builder",
+      "demo-narrative-builder",
+      "microsite-content-formatter",
+    ],
+  },
+  {
     id: "sales-leadership-pack",
     slug: "sales-leadership-pack",
     name: "Sales Leadership Pack",

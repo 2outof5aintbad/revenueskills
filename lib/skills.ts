@@ -1229,6 +1229,588 @@ Weak ICP fit or small ACV potential. Assign to sequences only.
     ],
   },
 
+  // ── Agentic Account Builder Skills ───────────────────────────────────────
+
+  {
+    id: "agentic-account-story-builder",
+    name: "Agentic Account Story Builder",
+    slug: "agentic-account-story-builder",
+    description:
+      "Turns a Slack Canvas account brief into an executive-ready transformation narrative AND a production-ready AccountSiteConfig JSON object — in one pass. Hub-and-spoke orchestrator for the full Agentic Account Builder bundle. Outputs the complete three-act story (Gaps → Connected Enterprise → Agentic Enterprise) plus structured JSON ready to paste into the microsite generator.",
+    category: "sales",
+    tags: ["account narrative", "transformation story", "JSON output", "microsite", "SE", "executive brief", "Salesforce"],
+    author: "@marketplace-user",
+    authorBio:
+      "Principal SE at a Fortune 500 SaaS company. Builds tools that make sellers and SEs look sharper in front of customers. Obsessed with the pre-meeting ritual.",
+    installs: 1_240,
+    rating: 4.9,
+    featured: true,
+    triggers: [
+      "Build an account story from my Slack Canvas",
+      "Turn this account context into an executive narrative",
+      "Generate an AccountSiteConfig JSON for this account",
+      "Build a transformation brief for my onsite",
+      "Create the full three-act story for this account",
+    ],
+    exampleOutput: `## EXECUTIVE TRANSFORMATION BRIEF — Acme Beverage Co.
+
+---
+
+## HOMEPAGE
+
+**Headline:** From Fragmented Operations to the Agentic Bottler
+
+**Subheadline:** How Acme Beverage Co. and Salesforce are building the platform that runs the modern beverage enterprise — from the contact center to the last mile.
+
+**Executive Summary:**
+Acme operates across three business units with no unified customer profile, three separate contact platforms, and field teams that live entirely outside Salesforce. The result is reactive service, rising cost-per-interaction, and no visibility until something breaks. This brief maps a path from that fragmented state to a connected, agentic enterprise — where Acme's existing Salesforce investment becomes the operating system for every customer-facing workflow.
+
+---
+
+## ACT 1 — THE GAPS
+
+Acme's current architecture was built to handle yesterday's volume. Today, it's creating invisible costs at every layer.
+
+- **Contact platform fragmentation:** Legacy system handles inbound volume but has no Salesforce integration — agents context-switch between 3+ systems per call, adding 4–6 minutes of handle time per interaction
+- **No unified customer profile:** Three separate Salesforce orgs with no shared data layer — the same customer appears as three strangers
+- **Field teams are invisible:** Technicians and drivers communicate via personal cell — no case record, no resolution data
+- **Automation covers the easy 20%:** Self-service handles routine inquiries; the 80% that matters still hits a human with no context
+- **AI spend is unpredictable:** Consumption-based billing creates board-level anxiety around every pilot
+
+---
+
+## ACT 2 — THE CONNECTED ENTERPRISE
+
+Slack becomes the layer where Salesforce intelligence surfaces in the flow of work.
+
+- Agent pre-call briefings arrive in Slack before the phone rings — no tab-switching, full context on arrival
+- Driver and field tech workflows run on any mobile device — all in Salesforce
+- Unmetered AI means every Slackbot interaction is predictable cost
+- Multi-org: all entities share one workspace, not three separate tools
+
+---
+
+## DATA FOUNDATION
+
+Before Agentforce can think, Acme has to see.
+
+Acme's data is scattered across SAP, a legacy OMS, UCCX, and three Salesforce orgs that have never shared a customer record. Data Cloud listens to every system in real time and assembles a single, continuously updated profile. SAP keeps running. The OMS keeps running. For the first time, there is one version of every customer — live and available to every agent and every AI the moment something changes.
+
+Business unlocks:
+- Unified profile → agents resolve in one console, not four tabs
+- Real-time order sync → Agentforce suggests resolution before the agent picks up
+- Every Agentforce action feeds back into Data Cloud → the system improves without a data science team
+
+---
+
+## ACT 3 — THE AGENTIC ENTERPRISE
+
+When data is unified and the work layer is connected, Agentforce acts.
+
+- 80% of standard distributor cases resolved autonomously — agent reviews, not investigates
+- Escalations arrive in Slack with full case context, order history, and suggested resolution pre-loaded
+- Post-call case notes generated automatically — after-call work eliminated
+- Weekly Slack AI digest gives CIO deflection rate, case volume, and cost-per-interaction
+
+---
+
+\`\`\`json
+{
+  "account": {
+    "companyName": "Acme Beverage Co.",
+    "industry": "Consumer Packaged Goods",
+    "strategicMoment": "Platform renewal and Agentforce expansion — board in cost-scrutiny posture"
+  },
+  "theme": { "accentColor": "#00A1E0" },
+  "homepage": {
+    "headline": "From Fragmented Operations to the Agentic Bottler",
+    "subheadline": "How Acme Beverage Co. and Salesforce are building the platform that runs the modern beverage enterprise.",
+    "executiveSummary": "Acme operates across three business units with no unified customer profile and field teams that live entirely outside Salesforce. This brief maps the path to a connected, agentic enterprise."
+  },
+  "acts": [
+    {
+      "id": "gaps",
+      "title": "The Gaps Are Costing You",
+      "narrative": "Acme's current architecture creates invisible costs at every layer — in agent handle time, missed escalations, and field teams operating entirely off-record.",
+      "keyPoints": [
+        "Legacy contact platform has no Salesforce integration — agents context-switch across 3 systems per call",
+        "Three Salesforce orgs with no shared data layer — the same customer appears as three strangers",
+        "Field techs and drivers communicate via personal cell — no case record, no resolution data",
+        "Self-service automation covers only 20% of volume"
+      ]
+    }
+  ]
+}
+\`\`\`
+
+*...full AccountSiteConfig JSON generated in complete output*`,
+    reviews: [
+      {
+        id: "r1",
+        rating: 5,
+        text: "This is the skill I didn't know I needed. I pasted in my Slack Canvas notes before a major onsite and had a polished executive narrative AND ready-to-use JSON in under 10 minutes. My AE said it was the best pre-call brief she'd ever seen.",
+        author: "@jessica.park",
+        date: "2026-04-20T10:00:00Z",
+      },
+      {
+        id: "r2",
+        rating: 5,
+        text: "The JSON output is the killer feature. I pasted it straight into our microsite generator and had a live customer-facing site before lunch. What used to take a full day now takes a morning.",
+        author: "@tyler.brooks",
+        date: "2026-04-14T14:30:00Z",
+      },
+      {
+        id: "r3",
+        rating: 5,
+        text: "Act 1 forces you to be embarrassingly specific about the customer's pain — named systems, named gaps, named costs. That specificity is what makes the whole story credible.",
+        author: "@sarah.kim",
+        date: "2026-03-28T09:15:00Z",
+      },
+    ],
+    versions: [
+      {
+        version: "1.0.0",
+        changeSummary: "Initial release. Full three-act narrative + AccountSiteConfig JSON output. Hub-and-spoke orchestrator for the Agentic Account Builder bundle.",
+        createdAt: "2026-04-01T00:00:00Z",
+      },
+    ],
+  },
+
+  {
+    id: "salesforce-use-case-builder",
+    name: "Salesforce Use Case Builder",
+    slug: "salesforce-use-case-builder",
+    description:
+      "Generates a single, specific, executive-ready transformation use case for Salesforce engagements. Names the broken workflow, contrasts before and after states with precision, and outputs demo hooks — the specific moments that make the 'after' tangible in a live demo. Eliminates generic capability descriptions.",
+    category: "sales",
+    tags: ["use case", "transformation", "demo", "Salesforce", "Agentforce", "SE", "scenario"],
+    author: "@marketplace-user",
+    authorBio:
+      "Principal SE at a Fortune 500 SaaS company. Builds tools that make sellers and SEs look sharper in front of customers. Obsessed with the pre-meeting ritual.",
+    installs: 987,
+    rating: 4.8,
+    featured: false,
+    triggers: [
+      "Build a use case for this account",
+      "Give me a concrete transformation scenario for the contact center",
+      "Generate a before/after use case for Agentforce",
+      "Create a hero use case for my demo",
+      "Turn this pain point into a use case",
+    ],
+    exampleOutput: `## USE CASE: Autonomous Case Resolution — From Inbound Call to Closed Case
+
+**Scenario:**
+When a distributor calls about a mis-picked order, the agent opens 4 tabs, spends 6 minutes finding the account, and still doesn't have the delivery record. By the time they have context, the customer has been on hold twice — and the agent still doesn't know if this distributor has had this problem before.
+
+**Before State:**
+- Agent receives inbound call with no screen pop — manually searches account by phone number across 2 systems
+- Order history lives in OMS (not Salesforce) — agent navigates to second tab mid-call
+- Delivery records in a third system — agent reads them aloud from a different screen
+- No visibility into prior cases from other business units — same customer may have 3 open issues the agent doesn't know about
+- Agent writes case notes manually post-call — average 8 minutes of after-call work per interaction
+
+**After State:**
+- Agentforce detects inbound caller, pulls unified Data Cloud profile — account, orders, delivery records, prior cases — before the agent picks up
+- Suggested response appears in the agent console with approval threshold pre-calculated
+- Agent accepts with one click — call handle time drops to under 2 minutes
+- If issue exceeds authority, Agentforce escalates to a Slack channel with full context pre-loaded
+- Post-call case notes generated automatically — after-call work eliminated
+
+**Business Impact:**
+- Handle time: 6–8 minutes → under 2 minutes for standard resolution types
+- After-call work: eliminated for cases resolved within agent authority
+- Escalation SLA: untracked → Slack-native with context, avg resolution time reduced 40–60%
+- Agent context-switching: 3–4 tabs → single console view
+- First-contact resolution rate: increases as root causes become visible for the first time
+
+**Demo Hooks:**
+1. Show the unified Data Cloud profile appearing in the agent console before the call is answered
+2. Show the Agentforce suggested response with approval threshold pre-calculated
+3. Show the Slack escalation channel opening with full case context and suggested resolution pre-loaded
+4. Show post-call case notes auto-generated — agent reviews and submits in under 10 seconds`,
+    reviews: [
+      {
+        id: "r1",
+        rating: 5,
+        text: "My demos used to start with 'let me show you what Agentforce can do.' Now they start with 'let me show you the call your agent just had.' The before state is the secret — make them feel the pain before you show the fix.",
+        author: "@marco.diaz",
+        date: "2026-04-15T11:30:00Z",
+      },
+      {
+        id: "r2",
+        rating: 5,
+        text: "The demo hooks section is what makes this indispensable for SEs. It doesn't just describe the use case — it tells you exactly which moments to show live. Saved me 2 hours of demo scripting before a major onsite.",
+        author: "@priya.sharma",
+        date: "2026-04-02T09:45:00Z",
+      },
+      {
+        id: "r3",
+        rating: 4,
+        text: "Strong output when you give it a specific persona and system context. Generic input produces generic output. Invest 5 minutes in the input and you get something worth presenting to a CIO.",
+        author: "@evan.wright",
+        date: "2026-03-19T14:00:00Z",
+      },
+    ],
+    versions: [
+      {
+        version: "1.0.0",
+        changeSummary: "Initial release. Named-workflow before/after structure, business impact metrics, and demo hook output.",
+        createdAt: "2026-04-01T00:00:00Z",
+      },
+    ],
+  },
+
+  {
+    id: "data-360-foundation-builder",
+    name: "Data 360 & Agentic Foundation Builder",
+    slug: "data-360-foundation-builder",
+    description:
+      "Builds the data layer narrative that bridges Act 2 and Act 3. Explains why a unified data foundation is the prerequisite for AI to work — as a business argument, not a technical pitch. Names the silos, names the consequences, and makes the CIO feel that skipping Data Cloud means the AI investment fails. Because it does.",
+    category: "sales",
+    tags: ["Data Cloud", "data foundation", "MuleSoft", "Agentforce", "unified data", "CIO", "architecture"],
+    author: "@marketplace-user",
+    authorBio:
+      "Principal SE at a Fortune 500 SaaS company. Builds tools that make sellers and SEs look sharper in front of customers. Obsessed with the pre-meeting ritual.",
+    installs: 856,
+    rating: 4.8,
+    featured: false,
+    triggers: [
+      "Explain why Data Cloud is required for this account",
+      "Build the data foundation narrative",
+      "Why do we need Data Cloud if we already have Salesforce?",
+      "Create the data layer story for my executive brief",
+      "Build the MuleSoft + Data Cloud argument for a non-technical exec",
+    ],
+    exampleOutput: `## DATA FOUNDATION
+### Before Agentforce Can Think, Acme Has to See
+
+Acme's data isn't broken. It's scattered across a dozen systems that have never been asked to talk to each other. That was fine when humans were doing the orchestration. It breaks the moment you ask AI to do it.
+
+**The Fragmentation Picture:**
+- **Salesforce Sales Cloud (Org 1):** Key account relationships and opportunities — no service history, no order data
+- **Salesforce Service Cloud (Org 2):** Case records and contact center history — no account context, no field data
+- **SAP ERP:** Order management and fulfillment — never syncs to Salesforce in real time
+- **Legacy OMS:** Delivery records and route data — accessible only to logistics, via separate login
+- **Cisco UCCX:** Inbound call data — no integration, no screen pop, no Salesforce record created on interaction
+- **Field Service (standalone):** Technician visits and resolution notes — invisible to contact center
+
+The consequence is not a data problem. It's a service problem. An agent handling a distributor call is flying blind — because the systems that know the answer aren't connected to the system the agent is looking at.
+
+**What Unification Actually Means:**
+Data Cloud doesn't replace any of these systems. SAP keeps running. The OMS keeps running. What Data Cloud does is listen to all of them — in real time — and assemble a single, continuously updated profile of every customer, account, order, and interaction. MuleSoft connects the pipes. Data Cloud assembles the picture. For the first time, Acme has one version of a customer — not three, not a sync job that runs at night. One version: live, complete, and available to every agent and every AI the moment it changes.
+
+**Why Agentforce Needs This:**
+Agentforce is not magic. It's a reasoning engine. It can only suggest the right action if it can see the full picture. Without Data Cloud, Agentforce sees a fragment. It suggests a fragment. The customer feels a fragment. The unified profile is not a prerequisite for the data team — it's a prerequisite for the AI investment to return anything.
+
+**Business Unlocks:**
+- Unified customer profile → agents resolve in one console, not four tabs
+- Real-time order sync → Agentforce suggests resolution options before the agent picks up the phone
+- Cross-org account view → key account health visible across Sales, Service, and Field
+- Delivery data in Salesforce → field escalations route with full context, no re-explaining
+- Every Agentforce action trains the next → the system improves without a data science team`,
+    reviews: [
+      {
+        id: "r1",
+        rating: 5,
+        text: "Finally a way to explain Data Cloud that doesn't sound like a CDP pitch deck. I used this before a CIO briefing and she said it was the clearest explanation of why the data layer matters that she'd heard. We moved from 'maybe later' to 'let's scope it' in that meeting.",
+        author: "@derek.thompson",
+        date: "2026-04-17T09:30:00Z",
+      },
+      {
+        id: "r2",
+        rating: 5,
+        text: "The 'agentic bridge' section is the unlock. Connecting data unification directly to why the AI fails without it — that's the argument that lands with technical buyers who think they can skip Data Cloud.",
+        author: "@rachel.wong",
+        date: "2026-04-03T14:15:00Z",
+      },
+      {
+        id: "r3",
+        rating: 4,
+        text: "Very strong. Works best when you name the actual systems in play — the more specific the silo list, the harder it is for the customer to dismiss as a generic vendor argument.",
+        author: "@sam.okafor",
+        date: "2026-03-21T10:00:00Z",
+      },
+    ],
+    versions: [
+      {
+        version: "1.0.0",
+        changeSummary: "Initial release. Fragmentation narrative, unification argument, agentic bridge, and business unlocks.",
+        createdAt: "2026-04-01T00:00:00Z",
+      },
+    ],
+  },
+
+  {
+    id: "demo-narrative-builder",
+    name: "Demo Narrative Builder",
+    slug: "demo-narrative-builder",
+    description:
+      "Generates a sequenced set of 3–5 demo blocks that support a transformation narrative across Acts 1, 2, and 3. Each demo has a title, mini-story description, what-to-show bullets, runtime estimate, and embed URL placeholder. Designed to answer the specific 'I'll believe it when I see it' moments in the story — not to give product tours.",
+    category: "sales",
+    tags: ["demo", "demo strategy", "Vidyard", "SE", "narrative", "proof points", "demo sequencing"],
+    author: "@marketplace-user",
+    authorBio:
+      "Principal SE at a Fortune 500 SaaS company. Builds tools that make sellers and SEs look sharper in front of customers. Obsessed with the pre-meeting ritual.",
+    installs: 743,
+    rating: 4.7,
+    featured: false,
+    triggers: [
+      "Build a demo set for my account narrative",
+      "Define which demos to run for this onsite",
+      "Sequence my demos across the three acts",
+      "Create a demo strategy for my executive briefing",
+      "What should I actually show in my demo?",
+    ],
+    exampleOutput: `## DEMO SET — Acme Beverage Co.
+
+---
+
+### Demo 1: The Status Quo (Act 1 Contrast)
+**Category:** Act 1 Contrast
+**Description:**
+Before showing what's possible, show what's real. This demo walks through a typical contact center interaction today — agent receives an inbound call, navigates three systems to find context, puts the customer on hold twice, and manually enters case notes after the call. Watching it is the fastest way to make the transformation feel urgent.
+**What to show:**
+- Agent receives inbound call — no screen pop, manual account lookup
+- Context-switching across Salesforce, OMS, and legacy system
+- Customer placed on hold while agent searches for order record
+- Manual case note entry post-call — count out loud how long it takes
+**Runtime:** 3–4 minutes
+**embedUrl:** [VIDYARD_EMBED_URL]
+
+---
+
+### Demo 2: The Work OS — Slack as the Nerve Center (Act 2)
+**Category:** Work OS
+**Description:**
+This demo establishes Slack not as a chat tool, but as the operating layer where Salesforce intelligence surfaces in the flow of work. An at-risk distributor account fires a signal — Agentforce surfaces it in Slack with full account context — the AE responds with one click. No Salesforce tab required.
+**What to show:**
+- At-risk account signal fires in Slack — account summary, open opportunities, suggested action
+- AE accepts suggested outreach from Slack — one click, Salesforce updated automatically
+- Mobile view: field tech receives work order update in Slack, confirms completion, case auto-closes
+**Runtime:** 5–7 minutes
+**embedUrl:** [VIDYARD_EMBED_URL]
+
+---
+
+### Demo 3: The Unified Profile — Data Cloud in Action
+**Category:** Data Foundation
+**Description:**
+The 'aha moment' for technical stakeholders. A single Data Cloud profile pulling in real time from SAP, the legacy OMS, Service Cloud, and UCCX — one view, live. This answers the question every CIO asks: 'Can we actually see everything in one place?'
+**What to show:**
+- Open unified profile — show all data sources listed
+- Trigger an order change in OMS — watch it appear in the profile live
+- Show how this profile feeds the Agentforce suggested response
+**Runtime:** 5–6 minutes
+**embedUrl:** [VIDYARD_EMBED_URL]
+
+---
+
+### Demo 4: Autonomous Case Resolution — Agentforce End to End (Act 3)
+**Category:** Agentic Resolution
+**Description:**
+The headline demo. Inbound call detected, unified profile loaded, suggested resolution with approval threshold pre-calculated — all before the agent picks up. Agent accepts with one click. Case created, credit issued, case notes auto-generated. Under 90 seconds. The agent did three things: answer, review, confirm.
+**What to show:**
+- Inbound call detected — profile and suggested response appear before pickup
+- Agent one-click accept — credit issued, replacement order triggered automatically
+- Escalation path: Slack channel opens with full context when issue exceeds agent authority
+- Post-call: case notes auto-generated and submitted in under 10 seconds
+**Runtime:** 7–10 minutes
+**embedUrl:** [VIDYARD_EMBED_URL]
+
+---
+
+### Demo 5: The Executive View — Deflection, Cost, and ROI
+**Category:** Executive Overview
+**Description:**
+Close with the metric layer. Slack AI weekly digest and Salesforce dashboard surfacing deflection rate, handle time trends, and cost-per-interaction. Built for the CIO conversation — shows the investment is measurable and self-reporting.
+**What to show:**
+- Slack AI weekly digest — deflection rate, top case types, agent efficiency trend
+- Salesforce dashboard — cost-per-interaction over time, automation rate by case type
+**Runtime:** 3–4 minutes
+**embedUrl:** [VIDYARD_EMBED_URL]`,
+    reviews: [
+      {
+        id: "r1",
+        rating: 5,
+        text: "The sequencing logic is what sets this apart. It doesn't just generate demo descriptions — it builds them in order so each one makes the next feel inevitable. My demos stopped feeling like product tours and started feeling like arguments.",
+        author: "@kate.morrison",
+        date: "2026-04-18T13:30:00Z",
+      },
+      {
+        id: "r2",
+        rating: 5,
+        text: "The Act 1 contrast demo was something I'd never thought to build. Showing the painful status quo before showing the fix — it completely changes how the audience receives everything after. Win rate in technical evaluations is up since I started opening this way.",
+        author: "@james.liu",
+        date: "2026-04-06T10:00:00Z",
+      },
+      {
+        id: "r3",
+        rating: 4,
+        text: "Excellent starting point for SE demo prep. Give it the full three-act narrative and it produces a tight set. I usually run 3 of the 5 demos depending on audience — having them all pre-scoped means I can adapt on the fly.",
+        author: "@anna.petrov",
+        date: "2026-03-22T15:45:00Z",
+      },
+    ],
+    versions: [
+      {
+        version: "1.0.0",
+        changeSummary: "Initial release. 3–5 demo blocks sequenced across Acts 1, 2, and 3 with what-to-show bullets, runtime estimates, and embed URL placeholders.",
+        createdAt: "2026-04-01T00:00:00Z",
+      },
+    ],
+  },
+
+  {
+    id: "microsite-content-formatter",
+    name: "Microsite Content Formatter",
+    slug: "microsite-content-formatter",
+    description:
+      "Converts any account narrative content into a valid, complete AccountSiteConfig JSON object — ready to paste into the microsite generator. Pure structured output, no prose. Use it to format content from any source, patch a specific section of an existing JSON, or add team members and demo embed URLs without regenerating the full story.",
+    category: "productivity",
+    tags: ["JSON", "microsite", "formatter", "AccountSiteConfig", "structured output", "no-code"],
+    author: "@marketplace-user",
+    authorBio:
+      "Principal SE at a Fortune 500 SaaS company. Builds tools that make sellers and SEs look sharper in front of customers. Obsessed with the pre-meeting ritual.",
+    installs: 612,
+    rating: 4.6,
+    featured: false,
+    triggers: [
+      "Convert my narrative to AccountSiteConfig JSON",
+      "Format this content for the microsite generator",
+      "Generate clean JSON from my account brief",
+      "Update the team section of my AccountSiteConfig",
+      "Add Vidyard URLs to my existing JSON",
+    ],
+    exampleOutput: `{
+  "account": {
+    "companyName": "Acme Beverage Co.",
+    "industry": "Consumer Packaged Goods",
+    "strategicMoment": "Agentforce expansion and MuleSoft renewal — board in cost-scrutiny posture, framing as force multiplier on existing investment"
+  },
+  "theme": {
+    "accentColor": "#00A1E0"
+  },
+  "homepage": {
+    "headline": "From Fragmented Operations to the Agentic Bottler",
+    "subheadline": "How Acme Beverage Co. and Salesforce are building the operating system for the modern beverage enterprise.",
+    "executiveSummary": "Acme operates across three business units with no unified customer profile and field teams outside Salesforce entirely. This brief maps the path to a connected, agentic enterprise."
+  },
+  "acts": [
+    {
+      "id": "gaps",
+      "title": "The Gaps Are Costing You",
+      "narrative": "Acme's current architecture creates invisible costs at every layer — in agent handle time, missed escalations, and field teams operating entirely off-record.",
+      "keyPoints": [
+        "Legacy contact platform has no Salesforce integration — agents context-switch across 3 systems per call",
+        "Three Salesforce orgs with no shared data layer — the same customer appears as three strangers",
+        "Field techs and drivers communicate via personal cell — no case record, no resolution data",
+        "Self-service automation covers only 20% of volume"
+      ]
+    },
+    {
+      "id": "connected-enterprise",
+      "title": "The Work OS for Beverage",
+      "narrative": "Slack becomes the layer where Salesforce intelligence surfaces in the flow of work — not as a notification tool, but as the place where action happens.",
+      "keyPoints": [
+        "Agent pre-call briefings surface in Slack before the phone rings",
+        "Driver and field tech workflows run on any mobile device — all in Salesforce",
+        "Unmetered AI means every Slackbot interaction is predictable cost",
+        "Multi-org: all entities share one workspace"
+      ]
+    },
+    {
+      "id": "agentic-enterprise",
+      "title": "The Agentic Bottler",
+      "narrative": "When data is unified and the work layer is connected, Agentforce acts — resolving cases autonomously and escalating the ones that matter with full context already loaded.",
+      "keyPoints": [
+        "80% of standard distributor cases resolved autonomously",
+        "Escalations arrive in Slack with full case context pre-loaded",
+        "Post-call case notes generated automatically",
+        "Weekly Slack AI digest gives CIO deflection rate and cost-per-interaction"
+      ]
+    }
+  ],
+  "dataFoundation": {
+    "headline": "Before Agentforce Can Think, Acme Has to See",
+    "currentState": "Acme's data is scattered across SAP, a legacy OMS, UCCX, and three Salesforce orgs that have never shared a customer record.",
+    "unifiedFuture": "Data Cloud assembles a single, continuously updated profile from every system. One version of every customer — live, complete, and available to every agent and AI the moment something changes.",
+    "businessUnlocks": [
+      "Unified customer profile → agents resolve in one console, not four tabs",
+      "Real-time order sync → Agentforce suggests resolution before the agent picks up",
+      "Every Agentforce action feeds back into Data Cloud → the system improves without a data science team"
+    ]
+  },
+  "heroUseCase": {
+    "title": "Autonomous Case Resolution: From Inbound Call to Closed Case",
+    "scenario": "A distributor calls about a mis-picked order. Today the agent navigates three systems, puts the customer on hold twice, and spends 8 minutes on after-call work. With Agentforce and Data Cloud, the same call takes under 90 seconds.",
+    "before": "Agent receives inbound call with no screen pop, manually searches across two systems, navigates to OMS for order details, places customer on hold to find delivery record, spends 8 minutes on manual after-call work.",
+    "after": "Agentforce detects the caller, pulls the unified Data Cloud profile, presents a suggested resolution with approval threshold pre-calculated — before the agent picks up. Agent accepts with one click. Notes auto-generated.",
+    "businessImpact": [
+      "Handle time: 6–8 minutes → under 90 seconds for standard resolution types",
+      "After-call work: eliminated for cases resolved within agent authority",
+      "Escalation SLA: Slack-native with context, resolution time reduced 40–60%"
+    ]
+  },
+  "demos": [
+    {
+      "title": "The Status Quo — What Running on Duct Tape Looks Like",
+      "description": "A walk through the current contact center workflow — three systems, two holds, eight minutes of after-call work.",
+      "category": "Act 1 Contrast",
+      "embedUrl": "[VIDYARD_EMBED_URL]"
+    }
+  ],
+  "team": [
+    {
+      "name": "Account Executive",
+      "role": "Account Executive",
+      "group": "Sales",
+      "description": "Commercial lead for the engagement. Owns the renewal conversation and executive relationships.",
+      "image": "[SLACK_PROFILE_IMAGE_URL]"
+    }
+  ],
+  "nextSteps": [
+    {
+      "title": "Confirm Data Cloud Architecture Session",
+      "description": "Schedule a half-day working session with the data and IT team to map current data sources against the unified profile architecture."
+    },
+    {
+      "title": "Agentforce Credit Consumption Model",
+      "description": "Deliver a cost-per-interaction model based on current contact center volume framed against existing Salesforce spend."
+    }
+  ]
+}`,
+    reviews: [
+      {
+        id: "r1",
+        rating: 5,
+        text: "I use the Master Skill for the full story and this for cleanup. When I need to swap out team members or add Vidyard links without regenerating everything — this is the tool. Outputs clean JSON every time.",
+        author: "@jennifer.hall",
+        date: "2026-04-19T09:00:00Z",
+      },
+      {
+        id: "r2",
+        rating: 4,
+        text: "The patch-mode use case is underrated. I had a deck from a different format and needed to convert it to AccountSiteConfig. Pasted it in, got valid JSON in one pass.",
+        author: "@ben.nakamura",
+        date: "2026-04-07T11:30:00Z",
+      },
+      {
+        id: "r3",
+        rating: 5,
+        text: "Paired with the Master Skill this is a tight workflow. Master generates narrative + JSON in one pass. Formatter patches individual sections when I need to update without regenerating. Clean, fast, no hallucinated fields.",
+        author: "@claire.martin",
+        date: "2026-03-25T14:00:00Z",
+      },
+    ],
+    versions: [
+      {
+        version: "1.0.0",
+        changeSummary: "Initial release. Pure JSON output mode. Supports full generation from prose or patch mode for updating specific sections of an existing AccountSiteConfig.",
+        createdAt: "2026-04-01T00:00:00Z",
+      },
+    ],
+  },
+
   // ── High-Impact New Skills ─────────────────────────────────────────────────
 
   {
