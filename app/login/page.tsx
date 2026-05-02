@@ -7,42 +7,28 @@ import { Suspense } from "react";
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const error = searchParams.get("error");
+  const from = searchParams.get("from") ?? "/";
 
-  const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "loading" | "sent">("idle");
-  const [errorMsg, setErrorMsg] = useState<string | null>(
-    error === "expired" ? "That link has expired. Request a new one below." :
-    error === "invalid" ? "Invalid login link. Request a new one below." : null
-  );
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setErrorMsg(null);
+    setError(null);
+    setLoading(true);
 
-    if (!email.toLowerCase().endsWith("@salesforce.com")) {
-      router.push("/login/denied");
-      return;
-    }
-
-    setState("loading");
-
-    const res = await fetch("/api/auth/send", {
+    const res = await fetch("/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ password }),
     });
 
     if (res.ok) {
-      setState("sent");
+      router.push(from);
     } else {
-      const data = await res.json().catch(() => ({}));
-      if (data.error === "not-salesforce") {
-        router.push("/login/denied");
-      } else {
-        setErrorMsg("Something went wrong. Please try again.");
-        setState("idle");
-      }
+      setError("Incorrect password.");
+      setLoading(false);
     }
   }
 
@@ -51,61 +37,45 @@ function LoginForm() {
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
           <div className="w-12 h-12 rounded-xl bg-navy-900 flex items-center justify-center mx-auto mb-4">
-            <span className="text-white text-xl">⚡</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <rect x="4" y="15" width="16" height="4" rx="1.5" fill="white"/>
+              <rect x="5" y="9.5" width="14" height="4" rx="1.5" fill="white" opacity="0.7"/>
+              <rect x="7" y="4" width="10" height="4" rx="1.5" fill="white" opacity="0.5"/>
+            </svg>
           </div>
-          <h1 className="text-xl font-bold text-navy-900">Sign in to RevenueSkills</h1>
-          <p className="text-sm text-ink-400 mt-1">For Salesforce employees only</p>
+          <h1 className="text-xl font-bold text-navy-900">RevenueSkills</h1>
+          <p className="text-sm text-ink-400 mt-1">For Salesforce employees</p>
         </div>
 
-        {state === "sent" ? (
-          <div className="text-center space-y-4">
-            <div className="w-12 h-12 rounded-full bg-green-50 border border-green-100 flex items-center justify-center mx-auto">
-              <svg className="w-6 h-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-ink-900">Check your email</p>
-              <p className="text-sm text-ink-400 mt-1">We sent a login link to <span className="font-medium text-ink-700">{email}</span>. It expires in 15 minutes.</p>
-            </div>
-            <button
-              onClick={() => { setState("idle"); setEmail(""); }}
-              className="text-xs text-ink-400 hover:text-ink-700 transition-colors"
-            >
-              Use a different email
-            </button>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-ink-700 mb-1.5">
+              Password
+            </label>
+            <input
+              type="password"
+              autoFocus
+              className="field"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter password"
+            />
           </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-ink-700 mb-1.5">
-                Salesforce email
-              </label>
-              <input
-                type="email"
-                autoFocus
-                className="field"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@salesforce.com"
-              />
-            </div>
 
-            {errorMsg && (
-              <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2">
-                {errorMsg}
-              </p>
-            )}
+          {error && (
+            <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2">
+              {error}
+            </p>
+          )}
 
-            <button
-              type="submit"
-              disabled={state === "loading" || !email}
-              className="btn-primary w-full justify-center py-2.5 disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              {state === "loading" ? "Sending…" : "Send login link"}
-            </button>
-          </form>
-        )}
+          <button
+            type="submit"
+            disabled={loading || !password}
+            className="btn-primary w-full justify-center py-2.5 disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            {loading ? "Signing in…" : "Sign in"}
+          </button>
+        </form>
       </div>
     </div>
   );

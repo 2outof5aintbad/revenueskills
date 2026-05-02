@@ -1,11 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { jwtVerify } from "jose";
 
 const PUBLIC_PATHS = [
   "/login",
-  "/api/auth/send",
-  "/api/auth/verify",
+  "/api/auth/login",
   "/api/auth/logout",
   "/_next",
   "/favicon.ico",
@@ -15,10 +13,10 @@ function isPublic(pathname: string) {
   return PUBLIC_PATHS.some((p) => pathname.startsWith(p));
 }
 
-export async function middleware(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Admin section uses its own password gate — keep as-is
+  // Admin section uses its own password gate
   if (pathname.startsWith("/admin")) {
     if (pathname === "/admin/login") return NextResponse.next();
     const token = request.cookies.get("admin_token")?.value;
@@ -34,16 +32,11 @@ export async function middleware(request: NextRequest) {
 
   if (isPublic(pathname)) return NextResponse.next();
 
-  const sessionToken = request.cookies.get("rs_session")?.value;
-  const secret = process.env.SESSION_SECRET;
+  const session = request.cookies.get("rs_session")?.value;
+  const sitePassword = process.env.SITE_PASSWORD;
 
-  if (sessionToken && secret) {
-    try {
-      await jwtVerify(sessionToken, new TextEncoder().encode(secret));
-      return NextResponse.next();
-    } catch {
-      // Token invalid or expired — fall through to redirect
-    }
+  if (sitePassword && session === sitePassword) {
+    return NextResponse.next();
   }
 
   const loginUrl = request.nextUrl.clone();
