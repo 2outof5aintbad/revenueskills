@@ -30,8 +30,9 @@ export async function POST(req: Request) {
   const link = `${baseUrl}/api/auth/verify?token=${encodeURIComponent(token)}`;
 
   await resend.emails.send({
-    from: "RevenueSkills <noreply@revenueskills.ai>",
+    from: "RevenueSkills <onboarding@resend.dev>",
     to: email,
+    replyTo: "mike.emery.95@gmail.com",
     subject: "Your RevenueSkills login link",
     html: `
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;">
