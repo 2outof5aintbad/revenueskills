@@ -32,7 +32,7 @@ export async function POST(req: Request) {
   await resend.emails.send({
     from: "RevenueSkills <onboarding@resend.dev>",
     to: email,
-    replyTo: "mike.emery.95@gmail.com",
+    replyTo: "memery@salesforce.com",
     subject: "Your RevenueSkills login link",
     html: `
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;">
