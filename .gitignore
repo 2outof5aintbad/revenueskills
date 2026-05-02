@@ -27,3 +27,4 @@ data/
 # TypeScript
 tsconfig.tsbuildinfo
 next-env.d.ts
+.vercel

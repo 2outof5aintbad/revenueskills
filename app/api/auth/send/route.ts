@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { SignJWT } from "jose";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
   const { email } = await req.json().catch(() => ({}));
@@ -14,11 +14,12 @@ export async function POST(req: Request) {
   }
 
   const secret = process.env.SESSION_SECRET;
-  const resendKey = process.env.RESEND_API_KEY;
-  if (!secret || !resendKey) {
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
+
+  if (!secret || !gmailUser || !gmailAppPassword) {
     return NextResponse.json({ error: "Server misconfigured." }, { status: 500 });
   }
-  const resend = new Resend(resendKey);
 
   const token = await new SignJWT({ email: email.toLowerCase() })
     .setProtectedHeader({ alg: "HS256" })
@@ -29,10 +30,14 @@ export async function POST(req: Request) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
   const link = `${baseUrl}/api/auth/verify?token=${encodeURIComponent(token)}`;
 
-  await resend.emails.send({
-    from: "RevenueSkills <onboarding@resend.dev>",
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: { user: gmailUser, pass: gmailAppPassword },
+  });
+
+  await transporter.sendMail({
+    from: `"RevenueSkills" <${gmailUser}>`,
     to: email,
-    replyTo: "memery@salesforce.com",
     subject: "Your RevenueSkills login link",
     html: `
       <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;">
