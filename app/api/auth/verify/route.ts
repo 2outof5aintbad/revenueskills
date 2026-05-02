@@ -16,6 +16,10 @@ export async function GET(req: Request) {
     const { payload } = await jwtVerify(token, new TextEncoder().encode(secret));
     const email = payload.email as string;
 
+    if (!email.endsWith("@salesforce.com")) {
+      return NextResponse.redirect(`${baseUrl}/login/denied`);
+    }
+
     // Issue a longer-lived session token
     const sessionToken = await new SignJWT({ email })
       .setProtectedHeader({ alg: "HS256" })

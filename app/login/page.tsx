@@ -19,6 +19,12 @@ function LoginForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setErrorMsg(null);
+
+    if (!email.toLowerCase().endsWith("@salesforce.com")) {
+      router.push("/login/denied");
+      return;
+    }
+
     setState("loading");
 
     const res = await fetch("/api/auth/send", {
