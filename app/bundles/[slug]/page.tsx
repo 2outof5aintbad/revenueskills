@@ -119,7 +119,7 @@ export default function BundleDetailPage({ params }: Props) {
                 {
                   step: "1",
                   title: "Copy all skills",
-                  body: 'Click "Copy All SKILL.md" in the sidebar to copy the complete bundle definition to your clipboard.',
+                  body: 'Click "Copy All as Markdown" in the sidebar to copy all skills in this bundle to your clipboard.',
                 },
                 {
                   step: "2",
