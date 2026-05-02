@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import SkillCard from "@/components/SkillCard";
 import SectionHeader from "@/components/SectionHeader";
 import { SKILLS } from "@/lib/skills";
@@ -85,9 +86,9 @@ export default function HomePage() {
     <div>
 
       {/* ── 1. Hero ── */}
-      <section className="bg-white border-b border-surface-200">
-        <div className="max-w-5xl mx-auto px-6 pt-20 pb-20">
-          <div className="max-w-2xl">
+      <section className="bg-white border-b border-surface-200 overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 pt-20 pb-0 flex items-end gap-10">
+          <div className="max-w-2xl pb-20 shrink-0">
             <span className="inline-flex items-center gap-2 text-xs font-semibold text-brand-600 uppercase tracking-widest mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-600 inline-block" />
               Peer-built · Free · Salesforce revenue teams
@@ -107,6 +108,16 @@ export default function HomePage() {
                 Browse all skills
               </Link>
             </div>
+          </div>
+          <div className="hidden md:block relative shrink-0 ml-auto">
+            <Image
+              src="/hero-codey.png"
+              alt="Codey holding a bag of money"
+              width={320}
+              height={480}
+              className="object-contain drop-shadow-xl"
+              priority
+            />
           </div>
         </div>
       </section>
